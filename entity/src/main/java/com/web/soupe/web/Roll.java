@@ -1,31 +1,35 @@
 package com.web.soupe.web;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "M_ROLL")
+@DynamicInsert(true)
+@DynamicUpdate(true)
+@Table(name = "M_ROLL",catalog = "apple")
 public class Roll implements Serializable {
 
 	private static final long serialVersionUID = -7268159051330064687L;
 
-	@Id
-	@Column(name = "ID",nullable=false)
-	private Long id;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id ;
 
 	/**
 	 * 期号
 	 */
 	@Column(name = "NUMBERFIELD",nullable=false)
 	private String numberFiel;
-	
+
 	@Column(name="RED",nullable=false)
 	private String red ;
-	
+
 	@Column(name="BLUE",nullable=false)
 	private String blue ;
 	
@@ -35,7 +39,10 @@ public class Roll implements Serializable {
 	@Column(name="data_source_type")
 	private String dataSourceType;
 
-	public Long getId() {
+    public Roll() {
+    }
+
+    public Long getId() {
 		return id;
 	}
 

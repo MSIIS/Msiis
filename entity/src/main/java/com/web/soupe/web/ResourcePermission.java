@@ -1,20 +1,25 @@
 package com.web.soupe.web;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by lenovo on 2015/7/3.
  */
 @Entity
-@Table(name = "soupe_res_permission")
+@DynamicInsert(true)
+@DynamicUpdate(true)
+@Table(name = "soupe_res_permission",catalog = "apple")
 public class ResourcePermission  extends SimpleProperty implements Serializable {
     private static final long serialVersionUID = -8662431340218255008L;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   /* @GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
     @Column(name="res_id",nullable = false)
     private  int id ;
     @Column(name = "res_path",nullable = false)
@@ -23,6 +28,9 @@ public class ResourcePermission  extends SimpleProperty implements Serializable 
     private  String description ;
     @Column(name = "parent_id")
     private  int parentId ;
+
+    public ResourcePermission() {
+    }
 
     public int getId() {
         return id;

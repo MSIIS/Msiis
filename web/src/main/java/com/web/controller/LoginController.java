@@ -26,12 +26,14 @@ public class LoginController extends AbstractBaseController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(HttpServletRequest requet) {
-		return new ModelAndView("login", "message", null);
+        System.out.printf("login.jsp....");
+        return new ModelAndView("login", "message", null);
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView login1(HttpServletRequest requet) {
-		User user = (User) requet.getSession().getAttribute("loginedUser");
+        System.out.println("check login ....");
+        User user = (User) requet.getSession().getAttribute("loginedUser");
 		if(user==null){
 			return new ModelAndView("login", "message", null);
 		}

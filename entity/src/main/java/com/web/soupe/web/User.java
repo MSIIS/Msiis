@@ -1,25 +1,33 @@
 package com.web.soupe.web;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by lenovo on 2015/7/3.
  */
 @Entity
-@Table(name = "soupe_user")
+@DynamicInsert(true)
+@DynamicUpdate(true)
+@Table(name = "soupe_user",catalog = "apple")
 public class User implements Serializable {
     private static final long serialVersionUID = 2769404133329184773L;
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+   /* @GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
     @Column(name = "user_id",nullable =false)
     private  Long id ;
     @Column(name = "user_name",nullable = false)
     private  String userName;
     @Column(name = "passsord",nullable = false)
     private  String password;
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
