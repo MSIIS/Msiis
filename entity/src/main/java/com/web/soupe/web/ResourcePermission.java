@@ -13,21 +13,21 @@ import java.io.Serializable;
 @Entity
 @DynamicInsert(true)
 @DynamicUpdate(true)
-@Table(name = "soupe_res_permission",catalog = "apple")
-public class ResourcePermission  extends SimpleProperty implements Serializable {
+@Table(name = "soupe_res_permission", catalog = "apple")
+public class ResourcePermission extends SimpleProperty implements Serializable {
     private static final long serialVersionUID = -8662431340218255008L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    /* @GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
-    @Column(name="res_id",nullable = false)
-    private  int id ;
-    @Column(name = "res_path",nullable = false)
+    @Column(name = "res_id", nullable = false)
+    private int id;
+    @Column(name = "res_path", nullable = false)
     private String resourcePath;
     @Column(name = "description")
-    private  String description ;
+    private String description;
     @Column(name = "parent_id")
-    private  int parentId ;
+    private int parentId;
 
     public ResourcePermission() {
     }

@@ -13,18 +13,18 @@ import java.io.Serializable;
 @Entity
 @DynamicInsert(true)
 @DynamicUpdate(true)
-@Table(name = "soupe_user",catalog = "apple")
+@Table(name = "soupe_user", catalog = "apple")
 public class User implements Serializable {
     private static final long serialVersionUID = 2769404133329184773L;
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    /* @GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
-    @Column(name = "user_id",nullable =false)
-    private  Long id ;
-    @Column(name = "user_name",nullable = false)
-    private  String userName;
-    @Column(name = "passsord",nullable = false)
-    private  String password;
+    @Column(name = "user_id", nullable = false)
+    private Long id;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
+    @Column(name = "passsord", nullable = false)
+    private String password;
 
     public User() {
     }

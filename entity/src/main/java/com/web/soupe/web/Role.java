@@ -14,21 +14,21 @@ import java.io.Serializable;
 @DynamicInsert(true)
 @DynamicUpdate(true)
 
-@Table(name="soupe_role",catalog = "apple")
+@Table(name = "soupe_role", catalog = "apple")
 public class Role implements Serializable {
     private static final long serialVersionUID = -4456599242112294410L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     /*@GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
-    
-    @Column(name = "role_id" ,nullable = false)
-    private Long id ;
-    @Column(name = "code" ,nullable = false)
-    private String code ;
-    @Column(name="role_name" ,nullable = false)
-    private String name ;
-    @Column(name = "role_type" ,nullable = false)
-    private  String type;
+
+    @Column(name = "role_id", nullable = false)
+    private Long id;
+    @Column(name = "code", nullable = false)
+    private String code;
+    @Column(name = "role_name", nullable = false)
+    private String name;
+    @Column(name = "role_type", nullable = false)
+    private String type;
 
     public Role() {
     }
