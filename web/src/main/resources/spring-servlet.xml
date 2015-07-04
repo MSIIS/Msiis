@@ -9,11 +9,9 @@
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd              
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-
-    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
-    <context:component-scan base-package="com.web" />
+    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能  -->
+    <context:component-scan base-package="com.web.controller" />
     <!-- 开启注解 -->
-
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="favorPathExtension" value="false" />

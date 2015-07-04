@@ -2,7 +2,7 @@ package com.web.service.impl;
 
 
 import com.web.service.UserService;
-import org.com.soupe.web.User;
+import com.web.soupe.web.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

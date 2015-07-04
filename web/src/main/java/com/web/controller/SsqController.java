@@ -5,10 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.web.service.SsqService;
+import com.web.service.impl.ServiceManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.com.dto.web.SoupeWebModel;
-import org.com.soupe.web.Roll;
+import com.web.soupe.dto.SoupeWebModel;
+import com.web.soupe.web.Roll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = SsqController.PATH)
-public class SsqController {
+public class SsqController extends AbstractBaseController {
 	protected static final String PATH ="foundation/ssq";
 	private Logger logger = Logger.getLogger(SsqController.class);
-
-	@Autowired
-	private SsqService ssqService;
 
 	@RequestMapping(value = "/kill/getNums", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
@@ -64,7 +62,7 @@ public class SsqController {
 			}
 				
 		    
-			List<Roll> rolls =ssqService.getNumbersOfKill(reds, blues, number, sum1,sum2,sort);
+			List<Roll> rolls =this.serviceManager.getSsqService().getNumbersOfKill(reds, blues, number, sum1, sum2, sort);
 			soupewebModel.setData(rolls);
 			soupewebModel.setSuccess(true);
 		} catch (Exception ex) {
@@ -83,7 +81,7 @@ public class SsqController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(sort)){
-				List<Roll> rolls =ssqService.findNums(sort,type);
+				List<Roll> rolls =this.serviceManager.getSsqService().findNums(sort, type);
 				soupewebModel.setData(rolls);
 			}
 			soupewebModel.setSuccess(true);
@@ -103,7 +101,7 @@ public class SsqController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(ids)){
-			    ssqService.deleteNums(ids);
+                this.serviceManager.getSsqService().deleteNums(ids);
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
@@ -155,7 +153,7 @@ public class SsqController {
 			}
 				
 		    
-			List<Roll> rolls =ssqService.getNumbersOfChoose(reds, blues, number, sum1,sum2,sort);
+			List<Roll> rolls =this.serviceManager.getSsqService().getNumbersOfChoose(reds, blues, number, sum1, sum2, sort);
 			soupewebModel.setData(rolls);
 			soupewebModel.setSuccess(true);
 		} catch (Exception ex) {
@@ -175,7 +173,7 @@ public class SsqController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(sort)){
-				List<Roll> rolls =ssqService.findNums(sort,type);
+				List<Roll> rolls =this.serviceManager.getSsqService().findNums(sort, type);
 				soupewebModel.setData(rolls);
 			}
 			soupewebModel.setSuccess(true);
@@ -195,7 +193,7 @@ public class SsqController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(ids)){
-			    ssqService.deleteNums(ids);
+                this.serviceManager.getSsqService().deleteNums(ids);
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
@@ -205,5 +203,4 @@ public class SsqController {
 	     return soupewebModel;
 		
 	}
-
 }

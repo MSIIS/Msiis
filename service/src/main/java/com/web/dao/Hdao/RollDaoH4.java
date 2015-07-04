@@ -3,7 +3,7 @@ package com.web.dao.Hdao;
 
 import com.util.model.QueryRule;
 import com.web.dao.Hdao.base.HBaseDao;
-import org.com.soupe.web.Roll;
+import com.web.soupe.web.Roll;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

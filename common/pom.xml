@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>common</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
         <!-- Hibernate4 -->
         <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->

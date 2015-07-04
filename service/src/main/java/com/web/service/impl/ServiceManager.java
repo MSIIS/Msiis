@@ -4,16 +4,10 @@ import com.web.service.SsqService;
 import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-
-
-
-
-
-
-@Component("serviceManager")
+@Service("serviceManager")
 public class ServiceManager{
-	
 	@Autowired
 	private SsqService ssqService ;
 	@Autowired

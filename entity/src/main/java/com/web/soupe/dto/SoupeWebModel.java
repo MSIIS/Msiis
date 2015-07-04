@@ -1,4 +1,4 @@
-package org.com.dto.web;
+package com.web.soupe.dto;
 
 import java.util.List;
 import java.util.Map;

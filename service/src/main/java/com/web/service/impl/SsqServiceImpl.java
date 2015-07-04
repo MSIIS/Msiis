@@ -5,7 +5,7 @@ import com.util.model.DataType;
 import com.util.model.QueryRule;
 import com.web.dao.Hdao.DaoManager;
 import com.web.service.SsqService;
-import org.com.soupe.web.Roll;
+import com.web.soupe.web.Roll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

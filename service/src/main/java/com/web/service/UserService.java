@@ -1,6 +1,6 @@
 package com.web.service;
 
-import org.com.soupe.web.User;
+import com.web.soupe.web.User;
 
 import java.util.Collection;
 

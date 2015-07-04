@@ -1,4 +1,4 @@
-package org.com.soupe.web;
+package com.web.soupe.web;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "soupe_user")
 public class User implements Serializable {
+    private static final long serialVersionUID = 2769404133329184773L;
     @Id
     @Column(name = "user_id",nullable =false)
     private  Long id ;
