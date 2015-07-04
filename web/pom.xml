@@ -12,13 +12,55 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+        <groupId>Demo-master</groupId>
+        <artifactId>service</artifactId>
+         <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>
-        <finalName>web</finalName>
+    <finalName>web</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+        <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <!-- 不想打进的jar，以逗号分开 -->
+                <configuration>
+                    <packagingExcludes>
+                        WEB-INF/lib/rt-1.7.jar,
+                        WEB-INF/lib/tomcat-servlet-api-7.0.47.jar,
+                        WEB-INF/lib/sqljdbc-4.jar
+                    </packagingExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
