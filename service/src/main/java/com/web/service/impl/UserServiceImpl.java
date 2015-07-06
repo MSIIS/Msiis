@@ -1,6 +1,7 @@
 package com.web.service.impl;
 
 
+import com.web.service.BaserService;
 import com.web.service.UserService;
 import com.web.soupe.web.User;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import java.util.Collection;
 
 @Service("userServiceImpl")
 @Transactional(readOnly=true)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaserService implements UserService {
 
 
     @Override

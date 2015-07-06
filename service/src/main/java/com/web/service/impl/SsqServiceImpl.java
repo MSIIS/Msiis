@@ -4,6 +4,7 @@ package com.web.service.impl;
 import com.util.model.DataType;
 import com.util.model.QueryRule;
 import com.web.dao.Hdao.DaoManager;
+import com.web.service.BaserService;
 import com.web.service.SsqService;
 import com.web.soupe.web.Roll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,7 @@ import java.util.*;
 
 @Service("ssqServiceImpl")
 @Transactional(readOnly = true)
-public class SsqServiceImpl implements SsqService {
-
-	@Autowired
-	private DaoManager daoManager;
+public class SsqServiceImpl  extends BaserService implements SsqService {
 
 	@Override
 	@Transactional(readOnly = false)

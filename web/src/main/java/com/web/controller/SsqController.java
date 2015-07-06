@@ -66,7 +66,7 @@ public class SsqController extends AbstractBaseController {
 			soupewebModel.setData(rolls);
 			soupewebModel.setSuccess(true);
 		} catch (Exception ex) {
-			logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+			logger.error("获取双色球信息出错，" + ex.getMessage(), ex);
 			soupewebModel.setMessage(ex.getMessage());
 		
 		}
@@ -86,7 +86,7 @@ public class SsqController extends AbstractBaseController {
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
-			logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+			logger.error("获取双色球信息出错，，" + ex.getMessage(), ex);
 			soupewebModel.setMessage(ex.getMessage());
 		}
 	     return soupewebModel;
@@ -105,7 +105,7 @@ public class SsqController extends AbstractBaseController {
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
-			logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+			logger.error("获取双色球信息出错，，" + ex.getMessage(), ex);
 			soupewebModel.setMessage(ex.getMessage());
 		}
 	     return soupewebModel;
@@ -178,7 +178,7 @@ public class SsqController extends AbstractBaseController {
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
-			logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+			logger.error("获取双色球信息出错，，" + ex.getMessage(), ex);
 			soupewebModel.setMessage(ex.getMessage());
 		}
 	     return soupewebModel;

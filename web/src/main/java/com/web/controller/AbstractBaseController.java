@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by lenovo on 2015/7/4.
  */
-@Component
 public  class AbstractBaseController {
 
     @Autowired
