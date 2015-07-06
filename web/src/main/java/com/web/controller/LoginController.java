@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.util.model.UrlAccessPrefix;
+import com.util.tools.Md5;
 import com.web.service.UserService;
 import com.web.service.impl.ServiceManager;
 import org.apache.log4j.Logger;

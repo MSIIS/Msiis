@@ -24,20 +24,21 @@ function callSSQ(data){
 	var res =data['data'];
 	var tab_rows =$('#table-data').find('tr').length;
 	for(var i =1 ;i<tab_rows;i++){
-		 $("tr[id='"+i +"']").remove();　  
+		 $("tr[id='"+i +"']").remove();
 	}
 	$.each(res,function(i,result){ 
 		if(result!=null){
 			item = "<tr id ="+(i+1)+"><td> <input type='checkbox' name='chk_list' value="+result['id']+" onclick='setSelectAll()'/>"+
 			(i+1)+"</td><td>"+result['red']+"</td><td>"+result['blue']+"</td><td>"+result['redSum']+"</td> <td>"+result['dataSourceType']+"</td></tr>"; 
 			if($("tr[id='"+(i+1)+"']")!=null){
-				$("tr[id='"+(i+1)+"']").remove();　  
+				$("tr[id='"+(i+1)+"']").remove();
 			}
 			
 			$('#table-data').append(item); 
 		}else{
 			
 		}
+
 	}); 
 	if(res.length==0){
 		$('#table-data').append("<tr> id='1'<td>未查询到数据。</td></tr>"); 

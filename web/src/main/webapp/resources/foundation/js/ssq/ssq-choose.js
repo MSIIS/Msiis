@@ -38,7 +38,7 @@ function callSSQOfChoose(data){
 		}else{
 		}
 	});
-	if(res.length==0){
+	if(res.length==0&&tab_rows==0){
 		$('#table-data').append("<tr id='1'><td>未查询到数据。</td></tr>"); 
 	}
 }
