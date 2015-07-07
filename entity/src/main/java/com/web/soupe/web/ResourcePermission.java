@@ -28,6 +28,8 @@ public class ResourcePermission extends SimpleProperty implements Serializable {
     private String description;
     @Column(name = "parent_id")
     private int parentId;
+    @Column(name="res_name")
+    private String  res_name;
 
     public ResourcePermission() {
     }
@@ -62,5 +64,13 @@ public class ResourcePermission extends SimpleProperty implements Serializable {
 
     public void setParentId(int parentId) {
         this.parentId = parentId;
+    }
+
+    public String getRes_name() {
+        return res_name;
+    }
+
+    public void setRes_name(String res_name) {
+        this.res_name = res_name;
     }
 }
