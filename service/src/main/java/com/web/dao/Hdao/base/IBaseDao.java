@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import com.util.model.PageInfo;
 import com.util.model.QueryRule;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
@@ -299,10 +300,32 @@ public interface IBaseDao<T extends Serializable, PK extends Serializable> {
 	public abstract List<T> findPage(Criteria criteria, int pageNo, int pageSize);
 
 	/**
-	 * 封装Rule,方式获取数据
+	 * 封装Rule,方式获取数据。
 	 * @param queryRule
 	 * @return
 	 */
 	List<T> find(QueryRule queryRule);
+
+    /**
+     * 根据HQL获取实体列表，主要用于查询。
+     */
+    List<T> findByHql(String hql ,Object[] values);
+
+    /**
+     *执行hql语句，主要用于修改，删除等操作。
+     * @param hql  hql 语句  ，例如：delete from User  where userName = ? and status =?<br/>
+     * @param values  sql 条件值  例如：new Object[] { userName, status} <br/>
+     */
+     int executeHql(String hql ,Object[] values);
+
+
+    /**
+     * QueryRule 分页
+     * @param queryRule
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    PageInfo<T> getPagenInfo(QueryRule queryRule ,int pageNo , int pageSize);
 
 }

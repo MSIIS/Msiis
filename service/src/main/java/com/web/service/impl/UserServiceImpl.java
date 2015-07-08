@@ -1,6 +1,8 @@
 package com.web.service.impl;
 
 
+import com.util.model.PageInfo;
+import com.util.model.QueryRule;
 import com.web.service.BaserService;
 import com.web.service.UserService;
 import com.web.soupe.web.User;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.Map;
 
 
 @Service("userServiceImpl")
@@ -38,5 +41,17 @@ public class UserServiceImpl extends BaserService implements UserService {
     @Override
     public User save(User u) {
         return null;
+    }
+
+    @Override
+    public PageInfo<User> findPageInfoRule(Map<String, String> paramMap) {
+//        QueryRule queryRule = QueryRule.getInstance();
+//        queryRule.addNotEqual("id",0);
+//        queryRule.addAscOrder("id");
+        Integer pageNo=Integer.valueOf(paramMap.get("pageNo"));
+        Integer pageSize = Integer.valueOf(paramMap.get("pageSize"));
+//        return this.getDaoManager().getUserDaoH4().findPageInfo(queryRule,pageNo,pageSize);
+        String hql = "from User where 1=1 and id > ? ";
+        return this.getDaoManager().getUserDaoH4().findPageInfoBySql(hql,pageNo,pageSize,new Object[]{0L},null,null);
     }
 }

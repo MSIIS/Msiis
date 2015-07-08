@@ -11,6 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ *  基础DAO
+ * @param <T>
+ * @param <PK>
+ */
 public abstract class HBaseDao<T extends Serializable, PK extends Serializable>
 		extends BaseDaoForHinernate4<T, PK> {
 	// 日志输出类
@@ -27,9 +32,6 @@ public abstract class HBaseDao<T extends Serializable, PK extends Serializable>
     public List<T> queryForList(String sql){
     	return this.jdbcTemplate.queryForList(sql, this.entityClass);
     }
-	
-	
-	
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
