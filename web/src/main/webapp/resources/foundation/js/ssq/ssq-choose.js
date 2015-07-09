@@ -16,7 +16,7 @@ function getNumOfChoose(){
 			sort:sort
 			
 	};
-	var url=contextPath+'/foundation/ssq/choose/getNums';
+	var url=contextPath+'/view/ssq/choose/getNums';
 	myAjax("post", url, params,callSSQOfChoose,"json");
 }
 function callSSQOfChoose(data){

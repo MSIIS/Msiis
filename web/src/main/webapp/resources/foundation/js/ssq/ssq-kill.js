@@ -16,7 +16,7 @@ function getNum(){
 			sum:sum,
 			sort:sort
 	};
-	var url=contextPath+'/foundation/ssq/kill/getNums';
+	var url=contextPath+'/view/ssq/kill/getNums';
 	myAjax("post", url, params,callSSQ,"json");
 }
 function callSSQ(data){
@@ -54,7 +54,7 @@ function findNums(){
 		return;
 	}
 	var params={sort:sort,type:type};
-	var url=contextPath+'/foundation/ssq/kill/findNums';
+	var url=contextPath+'/view/ssq/kill/findNums';
 	myAjax("get", url, params,callSSQ,"json");
 	
 }
@@ -71,7 +71,7 @@ function deleteNums(){
 	   return;
 	}
 	var params={ids:ids.join()};
-	var url=contextPath+'/foundation/ssq/kill/deleteNums';
+	var url=contextPath+'/view/ssq/kill/deleteNums';
 	myAjax("post", url, params,callSSQ,"json");
 	
 }
