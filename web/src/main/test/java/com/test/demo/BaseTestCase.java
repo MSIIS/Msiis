@@ -1,10 +1,7 @@
 package com.test.demo;
 
-import com.util.tools.AssertUtils;
-import com.util.tools.JSonUtils;
-import com.web.service.SsqService;
+import com.util.tools.JsonUtils;
 import com.web.service.impl.ServiceManager;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,7 +31,7 @@ public class BaseTestCase {
 
     public <T> void showInfoForCollection(Collection<T> coll) {
         for (T ob : coll) {
-            System.out.println(JSonUtils.toJSONString(ob));
+            System.out.println(JsonUtils.toJSONString(ob));
         }
 
     }
