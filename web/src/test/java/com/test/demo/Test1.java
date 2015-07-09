@@ -7,9 +7,7 @@ import com.web.soupe.web.User;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by nlf on 2015-7-7.
@@ -43,6 +41,22 @@ public class Test1 extends  BaseTestCase {
     public void testLists(){
         List<Roll> rolls =this.getServiceManager().getSsqService().findListByJdbcSql(1L);
         this.showInfoForCollection(rolls);
+    }
+
+    @Test
+    public void testUserInsertBatch(){
+        List<User> users =new ArrayList<User>();
+        for(int i=0 ;i<3;i++){
+            User user =new User();
+            user.setId(Long.parseLong(i+1+""));
+            user.setPassword("123");
+            user.setUserName("admin"+i);
+            user.setCreateTime(new Date());
+            user.setStatus(1);
+            user.setDeleted(false);
+            users.add(user);
+        }
+        this.getServiceManager().getUserService().insertBatch(users);
     }
 
 }

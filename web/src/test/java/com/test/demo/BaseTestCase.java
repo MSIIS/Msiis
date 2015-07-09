@@ -5,6 +5,7 @@ import com.web.service.impl.ServiceManager;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.annotation.Resource;
 import java.util.Collection;
@@ -15,6 +16,7 @@ import java.util.Collection;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:applicationContext.xml","classpath*:spring-servlet.xml"})
+/*@TransactionConfiguration(transactionManager = "transactionManager")*/
 public class BaseTestCase {
 
 

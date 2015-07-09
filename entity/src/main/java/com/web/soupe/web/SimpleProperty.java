@@ -2,6 +2,8 @@ package com.web.soupe.web;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,11 +11,18 @@ import java.util.Date;
 public abstract class SimpleProperty implements Serializable {
     private static final long serialVersionUID = -3925929328684434068L;
 
-    @Column(name = "is_deleted")
-    public boolean deleted;
+    @Column(name = "is_deleted",nullable = false)
+    public boolean deleted =false;
 
     @Column(name = "create_time")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date createTime;
+
+    /**
+     * 0:禁用，1正常，3禁用，4冻结
+     */
+    @Column(name ="status",nullable = false)
+    public int status =0 ;
 
     public boolean isDeleted() {
         return deleted;
@@ -29,5 +38,13 @@ public abstract class SimpleProperty implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

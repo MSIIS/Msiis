@@ -27,8 +27,16 @@ public class Role implements Serializable {
     private String code;
     @Column(name = "role_name", nullable = false)
     private String name;
+    /**
+     * 角色类型  0，普通用户角色，2 管理员角色 3 超级噶管理员角色
+     */
     @Column(name = "role_type", nullable = false)
-    private String type;
+    private int type;
+    /**
+     * 是否系统预设角色
+     */
+    @Column(name = "is_system",nullable = false)
+    private boolean isSystem;
 
     public Role() {
     }
@@ -57,11 +65,19 @@ public class Role implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
+    }
+
+    public boolean isSystem() {
+        return isSystem;
+    }
+
+    public void setSystem(boolean isSystem) {
+        this.isSystem = isSystem;
     }
 }

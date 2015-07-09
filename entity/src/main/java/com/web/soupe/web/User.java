@@ -14,7 +14,7 @@ import java.io.Serializable;
 @DynamicInsert(true)
 @DynamicUpdate(true)
 @Table(name = "soupe_user", catalog = "apple")
-public class User implements Serializable {
+public class User extends SimpleProperty implements Serializable {
     private static final long serialVersionUID = 2769404133329184773L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class User implements Serializable {
     private Long id;
     @Column(name = "user_name", nullable = false)
     private String userName;
-    @Column(name = "passsord", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     public User() {

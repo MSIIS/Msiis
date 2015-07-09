@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 
@@ -18,6 +19,11 @@ import java.util.Map;
 public class UserServiceImpl extends BaserService implements UserService {
 
 
+    @Override
+    @Transactional(readOnly = false)
+    public void insertBatch(List<User> userList) {
+       this.getDaoManager().getUserDaoH4().insertBatchH(userList);
+    }
     @Override
     public User findUserByNameAndPassword(String name, String password) {
         return null;
