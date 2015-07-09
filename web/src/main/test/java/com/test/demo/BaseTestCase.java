@@ -1,6 +1,6 @@
 package com.test.demo;
 
-import com.util.tools.JsonUtils;
+import com.util.tools.JSonUtils;
 import com.web.service.impl.ServiceManager;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,7 +31,7 @@ public class BaseTestCase {
 
     public <T> void showInfoForCollection(Collection<T> coll) {
         for (T ob : coll) {
-            System.out.println(JsonUtils.toJSONString(ob));
+            System.out.println(JSonUtils.toJSONString(ob));
         }
 
     }
