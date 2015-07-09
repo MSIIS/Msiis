@@ -6,12 +6,14 @@ import com.util.model.QueryRule;
 import com.web.dao.Hdao.base.BaseWork;
 import com.web.dao.Hdao.base.HBaseDao;
 import com.web.soupe.web.Roll;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.Collection;
 import java.util.List;
 
@@ -44,8 +46,8 @@ public class RollDaoH4 extends HBaseDao<Roll, Long> {
     }
 
     public  List<Roll> findObjectByJdbc(Long id){
-       final   String sql = "select * from roll where  id =? ";
-       return this.getJdbcTemplate().queryForList(sql,new Object[]{id},Roll.class);
+       final   String sql = "select id,blue,red,red_sum,numberField from m_roll where  id =? ";
+       return  (List<Roll>)this.getJdbcTemplate().query(sql,new Object[]{id},new BeanPropertyRowMapper(Roll.class));
     }
 
 }

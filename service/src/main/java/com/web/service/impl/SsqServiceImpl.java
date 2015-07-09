@@ -3,11 +3,9 @@ package com.web.service.impl;
 
 import com.util.model.DataType;
 import com.util.model.QueryRule;
-import com.web.dao.Hdao.DaoManager;
 import com.web.service.BaserService;
 import com.web.service.SsqService;
 import com.web.soupe.web.Roll;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -16,7 +14,7 @@ import java.util.*;
 
 @Service("ssqServiceImpl")
 @Transactional(readOnly = true)
-public class SsqServiceImpl  extends BaserService implements SsqService {
+public  class SsqServiceImpl  extends BaserService implements SsqService {
 
 	@Override
 	@Transactional(readOnly = false)
@@ -119,7 +117,13 @@ public class SsqServiceImpl  extends BaserService implements SsqService {
 
 	}
 
-	@Override
+    @Override
+    public List<Roll> findListByJdbcSql(Long id) {
+
+        return this.getDaoManager().getRollDaoH4().findObjectByJdbc(id);
+    }
+
+    @Override
 	@Transactional(readOnly = false)
 	public List<Roll> getNumbersOfChoose(String[] reds, String[] blues,
 			int num, int sum1, int sum2, String sort) {

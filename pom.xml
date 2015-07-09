@@ -65,6 +65,11 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.6</version>
+        </dependency>
 
         <!-- Hibernate4 -->
         <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->

@@ -51,12 +51,12 @@ public abstract class HBaseDao<T extends Serializable, PK extends Serializable> 
         return null;
     }
 
-    public List<T> findObjectByJdbcSql(String sql) {
+    /*public List<T> findObjectByJdbcSql(String sql) {
         List<T> list = jdbcTemplate.queryForList(sql, this.entityClass);
         return list;
     }
     public void executeJdbcSql(String sql){
         jdbcTemplate.execute(sql);
-    }
+    }*/
 
 }

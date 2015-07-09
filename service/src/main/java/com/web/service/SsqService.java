@@ -43,4 +43,8 @@ public interface SsqService {
 	 * @param ids
 	 */
 	void deleteNums(String ids);
+
+    List<Roll> findListByJdbcSql(Long id);
+
+
 }

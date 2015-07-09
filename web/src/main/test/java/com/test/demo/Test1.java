@@ -2,11 +2,13 @@ package com.test.demo;
 
 import com.util.model.PageInfo;
 import com.web.service.SsqService;
+import com.web.soupe.web.Roll;
 import com.web.soupe.web.User;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,4 +39,10 @@ public class Test1 extends  BaseTestCase {
         System.out.println(Long.MAX_VALUE+":"+Long.MIN_VALUE);
         System.out.println(Integer.MAX_VALUE+":"+Integer.MIN_VALUE);
     }
+    @Test
+    public void testLists(){
+        List<Roll> rolls =this.getServiceManager().getSsqService().findListByJdbcSql(1L);
+        this.showInfoForCollection(rolls);
+    }
+
 }

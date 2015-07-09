@@ -12,7 +12,6 @@ import java.util.Collection;
 @Component("userDaoH4")
 public class UserDaoH4 extends HBaseDao<User, Long> {
 
-    @Override
     public void insertBatchH(Collection<?> collection) {
     }
 }
