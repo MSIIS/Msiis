@@ -48,15 +48,15 @@ public class Test1 extends  BaseTestCase {
         List<User> users =new ArrayList<User>();
         for(int i=0 ;i<3;i++){
             User user =new User();
-            user.setId(Long.parseLong(i+1+""));
+            user.setId(Long.parseLong(i + 1 + ""));
             user.setPassword("123");
-            user.setUserName("admin"+i);
-            user.setCreateTime(new Date());
+            user.setUserName("admin" + i);
             user.setStatus(1);
             user.setDeleted(false);
             users.add(user);
         }
         this.getServiceManager().getUserService().insertBatch(users);
+        System.out.println(this.getServiceManager().getUserService().findById(1L).getCreateTime());
     }
 
 }

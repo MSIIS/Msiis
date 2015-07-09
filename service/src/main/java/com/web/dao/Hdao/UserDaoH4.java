@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,7 +27,8 @@ public class UserDaoH4 extends HBaseDao<User, Long> {
                 @Override
                 public void execute(Connection connection) throws SQLException {
                     PreparedStatement ps = connection.prepareStatement(sql);
-                    Date date = new Date(new java.util.Date().getTime());
+                    Timestamp timestamp =  new Timestamp(new Date().getTime());
+
                     try{
                         for (User user : collection){
                             ps.setLong(1,user.getId());
@@ -33,7 +36,7 @@ public class UserDaoH4 extends HBaseDao<User, Long> {
                             ps.setString(3,user.getPassword());
                             ps.setInt(4, user.getStatus());
                             ps.setBoolean(5, user.isDeleted());
-                            ps.setDate(6, date);
+                            ps.setTimestamp(6, timestamp);
                             ps.addBatch();
                         }
                       ps.executeBatch();

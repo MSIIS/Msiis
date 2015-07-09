@@ -31,7 +31,7 @@ public class UserServiceImpl extends BaserService implements UserService {
 
     @Override
     public User findById(Long id) {
-        return null;
+        return this.getDaoManager().getUserDaoH4().get(id);
     }
 
     @Override
