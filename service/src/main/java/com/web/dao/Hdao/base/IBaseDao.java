@@ -328,4 +328,17 @@ public interface IBaseDao<T extends Serializable, PK extends Serializable> {
      */
     PageInfo<T> getPagenInfo(QueryRule queryRule ,int pageNo , int pageSize);
 
+
+    /**
+     * 自定义HQL语句查询分页信息
+     * @param hql   查询的sql
+     * @param pageNo   页码
+     * @param pageSize  分页大小
+     * @param values   参数列表
+     * @param countParams   对应的属性  可null
+     * @param countHql    查询总数
+     * @return
+     */
+    public abstract PageInfo<T>  findPageInfoBySql(String hql ,int pageNo ,int pageSize ,Object[] values,Object[] countParams ,String countHql);
+
 }

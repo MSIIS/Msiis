@@ -600,16 +600,9 @@ public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializabl
         return  pageInfo;
     }
 
-    /**
-     * 自定义HQL语句查询分页信息
-     * @param hql   查询的sql
-     * @param pageNo   页码
-     * @param pageSize  分页大小
-     * @param values   参数列表
-     * @param countParams   对应的属性  可null
-     * @param countHql    查询总数
-     * @return
-     */
+
+
+    @Override
     public PageInfo<T>  findPageInfoBySql(String hql ,int pageNo ,int pageSize ,Object[] values,Object[] countParams ,String countHql){
         pageNo = pageNo <= 0 ? 1 : pageNo;
         pageSize = pageSize <= 0 ? 10 : pageSize;
@@ -646,6 +639,16 @@ public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializabl
         pageInfo.setData(data);
 
         return  pageInfo;
+    }
+
+
+    /**
+     * 执行原生sql
+     *
+     * @param baseWork work子类
+     */
+    public void doWork(BaseWork baseWork) {
+        this.getSession().doWork(baseWork);
     }
 
     private String removeSelect(String hql) {
