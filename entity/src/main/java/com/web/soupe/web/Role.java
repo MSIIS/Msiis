@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lenovo on 2015/7/3.
@@ -20,7 +21,6 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     /*@GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
-
     @Column(name = "role_id", nullable = false)
     private Long id;
     @Column(name = "code", nullable = false)
@@ -32,11 +32,18 @@ public class Role implements Serializable {
      */
     @Column(name = "role_type", nullable = false)
     private int type;
+
+    @Column(name="status",nullable = false)
+    private  int status = 0;
     /**
      * 是否系统预设角色
      */
     @Column(name = "is_system",nullable = false)
-    private boolean isSystem;
+    private boolean isSystem=false;
+
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
+    private List<UserRoleRelation> userRoleRelationList;
+
 
     public Role() {
     }
@@ -79,5 +86,21 @@ public class Role implements Serializable {
 
     public void setSystem(boolean isSystem) {
         this.isSystem = isSystem;
+    }
+
+    public List<UserRoleRelation> getUserRoleRelationList() {
+        return userRoleRelationList;
+    }
+
+    public void setUserRoleRelationList(List<UserRoleRelation> userRoleRelationList) {
+        this.userRoleRelationList = userRoleRelationList;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

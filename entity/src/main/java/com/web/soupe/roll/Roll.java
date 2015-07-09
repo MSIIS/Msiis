@@ -1,4 +1,4 @@
-package com.web.soupe.web;
+package com.web.soupe.roll;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;

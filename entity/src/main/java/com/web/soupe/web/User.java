@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lenovo on 2015/7/3.
@@ -25,6 +26,9 @@ public class User extends SimpleProperty implements Serializable {
     private String userName;
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<UserRoleRelation> userRoleRelationList ;
 
     public User() {
     }
@@ -51,5 +55,13 @@ public class User extends SimpleProperty implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<UserRoleRelation> getUserRoleRelationList() {
+        return userRoleRelationList;
+    }
+
+    public void setUserRoleRelationList(List<UserRoleRelation> userRoleRelationList) {
+        this.userRoleRelationList = userRoleRelationList;
     }
 }

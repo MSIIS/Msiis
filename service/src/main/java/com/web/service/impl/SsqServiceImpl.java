@@ -5,7 +5,7 @@ import com.util.model.DataType;
 import com.util.model.QueryRule;
 import com.web.service.BaserService;
 import com.web.service.SsqService;
-import com.web.soupe.web.Roll;
+import com.web.soupe.roll.Roll;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;

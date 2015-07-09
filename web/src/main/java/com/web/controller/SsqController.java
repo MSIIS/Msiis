@@ -4,13 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.web.service.SsqService;
-import com.web.service.impl.ServiceManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;
-import com.web.soupe.web.Roll;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.web.soupe.roll.Roll;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

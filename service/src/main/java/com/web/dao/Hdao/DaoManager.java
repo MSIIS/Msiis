@@ -1,5 +1,6 @@
 package com.web.dao.Hdao;
 
+import com.web.soupe.web.UserRoleRelation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,12 @@ public class DaoManager {
 	private RollDaoH4 rollDaoH4;
 	@Autowired
 	private UserDaoH4 userDaoH4;
+
+    @Autowired
+    private RoleDaoH4 roleDaoH4;
+
+    @Autowired
+    private UserRoleRelationDaoH4 userRoleRelationDaoH4;
 
 	public RollDaoH4 getRollDaoH4() {
 		return rollDaoH4;
@@ -27,4 +34,19 @@ public class DaoManager {
 		this.userDaoH4 = userDaoH4;
 	}
 
+    public RoleDaoH4 getRoleDaoH4() {
+        return roleDaoH4;
+    }
+
+    public void setRoleDaoH4(RoleDaoH4 roleDaoH4) {
+        this.roleDaoH4 = roleDaoH4;
+    }
+
+    public UserRoleRelationDaoH4 getUserRoleRelationDaoH4() {
+        return userRoleRelationDaoH4;
+    }
+
+    public void setUserRoleRelationDaoH4(UserRoleRelationDaoH4 userRoleRelationDaoH4) {
+        this.userRoleRelationDaoH4 = userRoleRelationDaoH4;
+    }
 }

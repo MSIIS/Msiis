@@ -1,20 +1,16 @@
 package com.web.dao.Hdao;
 
 
-import com.util.model.PageInfo;
 import com.util.model.QueryRule;
 import com.web.dao.Hdao.base.BaseWork;
 import com.web.dao.Hdao.base.HBaseDao;
-import com.web.soupe.web.Roll;
+import com.web.soupe.roll.Roll;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Collection;
 import java.util.List;
 
 @Component("rollDaoH4")

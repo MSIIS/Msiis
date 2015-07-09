@@ -31,20 +31,25 @@ public class UserServiceImpl extends BaserService implements UserService {
 
     @Override
     public User findById(Long id) {
-        return this.getDaoManager().getUserDaoH4().get(id);
+        User user =this.getDaoManager().getUserDaoH4().get(id);
+        user.setUserRoleRelationList(user.getUserRoleRelationList());
+        return user;
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void deleteById(Long id) {
 
     }
 
     @Override
+    @Transactional(readOnly = false)
     public Collection<User> save(Collection<User> users) {
         return null;
     }
 
     @Override
+    @Transactional(readOnly = false)
     public User save(User u) {
         return null;
     }

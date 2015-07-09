@@ -1,7 +1,7 @@
 package com.web.service;
 
 
-import com.web.soupe.web.Roll;
+import com.web.soupe.roll.Roll;
 
 import java.util.List;
 
