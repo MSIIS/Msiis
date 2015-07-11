@@ -16,7 +16,7 @@ function getNumOfChoose(){
 			sort:sort
 			
 	};
-	var url=contextPath+'/view/ssq/choose/getNums';
+	var url=contextPath+'/view/roll/choose/getNums';
 	myAjax("post", url, params,callSSQOfChoose,"json");
 }
 function callSSQOfChoose(data){
@@ -52,7 +52,7 @@ function findNumsOfChoose(){
 		return;
 	}
 	var params={sort:sort,type:type};
-	var url=contextPath+'/foundation/ssq/choose/findNums';
+	var url=contextPath+'/view/roll/choose/findNums';
 	myAjax("get", url, params,callSSQOfChoose,"json");
 	
 }
@@ -69,7 +69,7 @@ function deleteNumsOfChoose(){
 		 return;
 	}
 	var params={ids:ids.join()};
-	var url=contextPath+'/foundation/ssq/choose/deleteNums';
+	var url=contextPath+'/view/roll/choose/deleteNums';
 	myAjax("post", url, params,callSSQOfChoose,"json");
 	
 }

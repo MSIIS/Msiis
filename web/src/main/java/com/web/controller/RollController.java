@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.util.model.UrlAccessPrefix;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = RollController.PATH)
 public class RollController extends BaseController {
-	protected static final String PATH ="foundation/ssq";
+	protected static final String PATH = UrlAccessPrefix.FORE_GROUD_PATH+"roll";
 	private Logger logger = Logger.getLogger(RollController.class);
 
 	@RequestMapping(value = "/kill/getNums", method = {RequestMethod.POST,RequestMethod.GET})

@@ -69,7 +69,7 @@
    });
    
    function submit1(){
-	   var url =contextPath+"/bfoundation/login/submit";
+	   var url =contextPath+"/admin/login/submit";
 	   $("#login").attr('action',url);
 	   $("#login").submit();
    }
