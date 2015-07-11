@@ -31,33 +31,30 @@
 <body background="#fff">
 <nav class="navbar navbar-inverse"  role="navigation ">
 <div class="container-fluid" id="index-top">
-    <div class="row">
         <div class="col-md-12">
             <div class="navbar-header">
                 <a class="navbar-brand" href="javascript:void(0);"
-                   onclick="zyzl();">自娱自乐</a>
+                   >平台后台管理</a>
             </div>
-            <div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:void(0);" onclick="index_choose();">双色球</a></li>
-                    <li><a href="javascript:void(0);" onclick="dlt();">大乐透</a></li>
+                    <li><a href="javascript:void(0);">系统配置</a></li>
                     <li><a href="javascript:void(0);" onclick="userManage();">用户管理</a></li>
-                    <li class="dropdown"><a href="javascript:void(0);"
-                                            class="dropdown-toggle" data-toggle="dropdown"> 其他 <b
-                            class="caret"></b>
-                    </a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">娱乐专区1 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Test1</a></li>
-                            <li><a href="#">Test2</a></li>
-                            <li><a href="#">Test3 Report</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Test4</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Test5</a></li>
-                        </ul></li>
+                            <li  ><a href="javascript:void(0);" onclick="index_choose();">双色球</a></li>
+                            <li ><a href="#" onclick="ssq();">双色球杀号</a></li>
+                            <li ><a href="#">双色球开奖</a></li>
+                            <li><a href="javascript:void(0);" onclick="dlt();">大乐透</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-        </div>
     </div>
 
 </div>
