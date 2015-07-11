@@ -21,7 +21,9 @@ import org.springframework.stereotype.Component;
 
 import javax.management.relation.Relation;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class MyRealm extends AuthorizingRealm {
@@ -38,8 +40,10 @@ public class MyRealm extends AuthorizingRealm {
         if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
+        /*User user = (User)principals.fromRealm(getName()).iterator().next();*/
+
         String name = (String) getAvailablePrincipal(principals);
-        List<String> roles = new ArrayList<String>();
+        Set<String> roles = new HashSet<String>();
         User user =userService.findUserByNameAndPassword(name,"",1);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         List<UserRoleRelation> relations =user.getUserRoleRelationList();
