@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = SsqController.PATH)
-public class SsqController extends AbstractBaseController {
+public class SsqController extends BaseController {
 	protected static final String PATH ="foundation/ssq";
 	private Logger logger = Logger.getLogger(SsqController.class);
 
