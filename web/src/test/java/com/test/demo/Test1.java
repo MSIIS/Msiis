@@ -83,7 +83,7 @@ public class Test1 extends BaseTestCase {
     public void testuserReal() {
 
         List<UserRoleRelation> roleRelations = this.getServiceManager().getUserService().findById(1L).getUserRoleRelationList();
-        System.out.println(roleRelations);
+        this.showInfoForCollection(roleRelations);
 
     }
 

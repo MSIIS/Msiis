@@ -23,7 +23,7 @@ public class JSonUtils {
         if (obj == null) {
             return null;
         }
-        return JSON.toJSONString(obj, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteNonStringKeyAsString);
+        return JSON.toJSONString(obj);
 
     }
 

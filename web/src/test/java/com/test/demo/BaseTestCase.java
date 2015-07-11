@@ -6,17 +6,21 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Collection;
 
 /**
+ * Junit测试基类
+ * 懒加载的时候，必须增加事物控制，否则事物session 提前关闭，拿不到数据。
  * Created by nlf on 2015-7-7.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:applicationContext.xml","classpath*:spring-servlet.xml"})
-/*@TransactionConfiguration(transactionManager = "transactionManager")*/
+@Transactional
+@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)
 public class BaseTestCase {
 
 
