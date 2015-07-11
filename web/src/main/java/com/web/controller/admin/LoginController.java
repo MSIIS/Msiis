@@ -17,6 +17,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,5 +67,13 @@ public class LoginController extends BaseController {
         }
         return new ModelAndView("admin/index", model);
     }
+
+    @RequestMapping(value = "logout")
+    public String logout(){
+        Subject subject =SecurityUtils.getSubject();
+        subject.logout();
+        return "admin/login";
+    }
+
 
 }
