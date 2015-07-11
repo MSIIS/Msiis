@@ -52,19 +52,19 @@ public class UserServiceImpl extends BaserService implements UserService {
     @Override
     @Transactional(readOnly = false)
     public void deleteById(Long id) {
-
+    this.getDaoManager().getUserDaoH4().delete(id);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public Collection<User> save(Collection<User> users) {
-        return null;
+    public void save(Collection<User> users) {
+        this.getDaoManager().getUserDaoH4().saveAll(users);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public User save(User u) {
-        return null;
+    public void save(User u) {
+        this.getDaoManager().getUserDaoH4().save(u);
     }
 
     @Override

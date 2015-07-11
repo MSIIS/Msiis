@@ -16,9 +16,9 @@ public interface UserService {
     
     void deleteById(Long id);
     
-    Collection<User> save(Collection<User> users);
+    void save(Collection<User> users);
     
-    User save(User u);
+    void save(User u);
 
     /**
      *  获取分页信息，实体ID需要为Int

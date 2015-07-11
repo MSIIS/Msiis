@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = LoginController.PATH)
 public class LoginController extends BaseController {
-    protected static final String PATH = UrlAccessPrefix.BACK_STAGE_PATH;
+    protected static final String PATH = "/admin/";
     private Logger logger = Logger.getLogger(LoginController.class);
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
@@ -34,13 +34,13 @@ public class LoginController extends BaseController {
         return new ModelAndView("admin/login", "message", null);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public ModelAndView login1(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
         if (user == null) {
             return new ModelAndView("admin/login", "message", null);
         }
-        return new ModelAndView("success", "message", null);
+        return new ModelAndView("admin/index", "message", null);
     }
 
     @RequestMapping(value = "login/submit", method = {RequestMethod.POST, RequestMethod.GET})
@@ -64,7 +64,7 @@ public class LoginController extends BaseController {
         } catch (Exception ex) {
             logger.error("验证登录信息出错，" + ex.getMessage(), ex);
         }
-        return new ModelAndView("admin/adminIndex", model);
+        return new ModelAndView("admin/index", model);
     }
 
 }

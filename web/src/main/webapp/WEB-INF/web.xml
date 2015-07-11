@@ -2,11 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-    </context-param>
-    <context-param>
-        <param-name>contextConfigShiro</param-name>
-        <param-value>classpath:shiro.xml</param-value>
+        <param-value>classpath:applicationContext.xml,classpath:encache-shiro.xml</param-value>
     </context-param>
     <listener>
         <description>spring listerner</description>

@@ -10,6 +10,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;
 import com.web.soupe.roll.Roll;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ public class RollController extends BaseController {
 	protected static final String PATH = UrlAccessPrefix.FORE_GROUD_PATH+"roll";
 	private Logger logger = Logger.getLogger(RollController.class);
 
+    @RequiresUser
 	@RequestMapping(value = "/kill/getNums", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public SoupeWebModel submit(
@@ -71,7 +73,7 @@ public class RollController extends BaseController {
 		}
 		return soupewebModel;
 	}
-	
+
 	@RequestMapping(value="/kill/findNums",method=RequestMethod.GET)
 	@ResponseBody
 	public SoupeWebModel findNums(@RequestParam(value = "sort", required = false) String sort,
@@ -91,8 +93,8 @@ public class RollController extends BaseController {
 	     return soupewebModel;
 		
 	}
-	
-	
+
+
 	@RequestMapping(value="/kill/deleteNums",method=RequestMethod.POST)
 	@ResponseBody
 	public SoupeWebModel delete(@RequestParam(value = "ids", required = false) String ids,

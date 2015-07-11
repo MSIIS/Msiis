@@ -29,18 +29,16 @@ public class MyRealm extends AuthorizingRealm {
     private UserService userService;
 
     /*
-     * (non-Javadoc)
+     *获取了当前登录用户的角色信息。
      *
      * @see org.apache.shiro.realm.AuthorizingRealm#doGetAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection)
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        // 根据用户配置用户与权限
         if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
         String name = (String) getAvailablePrincipal(principals);
-        AuthorizationInfo authenticationInfo =super.getAuthorizationInfo(principals);
         List<String> roles = new ArrayList<String>();
         User user =userService.findUserByNameAndPassword(name,"",1);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -48,7 +46,6 @@ public class MyRealm extends AuthorizingRealm {
         for(UserRoleRelation relation :relations){
             roles.add(String.valueOf(relation.getRole().getId()));
         }
-        // 增加角色
         info.addRoles(roles);
         return info;
     }
@@ -62,7 +59,6 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken)
             throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        // 简单默认一个用户,实际项目应User user = userService.getByAccount(token.getUsername());
         String userName=token.getUsername();
         String password =String.valueOf(token.getPassword());
          User user =userService.findUserByNameAndPassword(userName,password,1);
