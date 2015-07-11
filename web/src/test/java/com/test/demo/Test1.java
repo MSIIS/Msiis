@@ -53,12 +53,15 @@ public class Test1 extends BaseTestCase {
             user.setId(Long.parseLong(i + 1 + ""));
             user.setPassword("123");
             user.setUserName("admin" + i);
+            user.setRealName("大侠");
+            user.setNickName("菜苗 "+i);
             user.setStatus(1);
             user.setDeleted(false);
             users.add(user);
         }
         this.getServiceManager().getUserService().insertBatch(users);
-        System.out.println(this.getServiceManager().getUserService().findById(1L).getCreateTime());
+        User u = this.getServiceManager().getUserService().findById(1L);
+        System.out.println(u.getNickName());
     }
 
     @Test

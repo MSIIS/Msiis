@@ -4,6 +4,10 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
+    <context-param>
+        <param-name>contextConfigShiro</param-name>
+        <param-value>classpath:shiro.xml</param-value>
+    </context-param>
     <listener>
         <description>spring listerner</description>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -39,11 +43,13 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>spring</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    <!--spring mvc 结束-->
+    <!--　覆盖default　servlet的/,　springmvc servlet将处理原来处理静态资源的映射　-->
+   <servlet-mapping>
+       <servlet-name>spring</servlet-name>
+       <url-pattern>/</url-pattern>
+   </servlet-mapping>
+   <!--spring mvc 结束-->
+    <!-- Spring 刷新Introspector防止内存泄露 -->
     <listener>
         <listener-class>
             org.springframework.web.util.IntrospectorCleanupListener

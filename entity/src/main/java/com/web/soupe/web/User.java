@@ -22,10 +22,18 @@ public class User extends SimpleProperty implements Serializable {
    /* @GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
     @Column(name = "user_id", nullable = false)
     private Long id;
-    @Column(name = "user_name", nullable = false)
+    //登录名
+    @Column(name = "user_name", nullable = false,unique = true)
     private String userName;
+    //密码
     @Column(name = "password", nullable = false)
     private String password;
+    //昵称
+    @Column(name="nick_name",nullable = false,unique = true)
+    private  String nickName ;
+    //真实姓名
+    @Column(name = "real_name",nullable = false)
+    private String realName;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<UserRoleRelation> userRoleRelationList ;
@@ -63,5 +71,21 @@ public class User extends SimpleProperty implements Serializable {
 
     public void setUserRoleRelationList(List<UserRoleRelation> userRoleRelationList) {
         this.userRoleRelationList = userRoleRelationList;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface UserService {
 
-    User findUserByNameAndPassword(String name, String password);
+    User findUserByNameAndPassword(String name, String password,int status);
     
     User findById(Long id);
     

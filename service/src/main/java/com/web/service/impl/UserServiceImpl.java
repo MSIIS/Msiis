@@ -8,6 +8,7 @@ import com.web.service.UserService;
 import com.web.soupe.web.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.Collection;
@@ -26,14 +27,25 @@ public class UserServiceImpl extends BaserService implements UserService {
        this.getDaoManager().getUserDaoH4().insertBatchH(userList);
     }
     @Override
-    public User findUserByNameAndPassword(String name, String password) {
+    public User findUserByNameAndPassword(String name, String password,int status) {
+        QueryRule queryRule =QueryRule.getInstance();
+        queryRule.addEqual("userName",name);
+        if(!StringUtils.isEmpty(password)){
+            queryRule.addEqual("password",password);
+        }
+        if(status!=-1){
+            queryRule.addEqual("status",status);
+        }
+        List<User>  users =this.daoManager.getUserDaoH4().find(queryRule);
+        if(!CollectionUtils.isEmpty(users)){
+            return users.get(0);
+        }
         return null;
     }
 
     @Override
     public User findById(Long id) {
         User user =this.getDaoManager().getUserDaoH4().get(id);
-        user.setUserRoleRelationList(user.getUserRoleRelationList());
         return user;
     }
 

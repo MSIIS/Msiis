@@ -64,12 +64,12 @@
 	   $("#main").css({
 		    "position": "absolute",
 		    "top": $(document).height()/5,
-		    "left": $(document).width()/3,
+		    "left": $(document).width()/3
 		}); 
    });
    
    function submit1(){
-	   var url =contextPath+"/admin/login/submit";
+	   var url =contextPath+"/admin/service/login/submit";
 	   $("#login").attr('action',url);
 	   $("#login").submit();
    }

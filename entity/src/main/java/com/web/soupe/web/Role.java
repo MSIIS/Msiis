@@ -23,16 +23,17 @@ public class Role implements Serializable {
     /*@GenericGenerator(name = "persistenceGenerator", strategy = "increment")*/
     @Column(name = "role_id", nullable = false)
     private Long id;
-    @Column(name = "code", nullable = false)
+    @Column(name = "role_code", nullable = false,unique = true)
     private String code;
     @Column(name = "role_name", nullable = false)
     private String name;
     /**
-     * 角色类型  0，普通用户角色，2 管理员角色 3 超级噶管理员角色
+     * 角色类型  0，普通用户角色， 8 管理员角色 9 超级管理员角色
      */
     @Column(name = "role_type", nullable = false)
     private int type;
 
+    // 0未激活 1正常
     @Column(name="status",nullable = false)
     private  int status = 0;
     /**
