@@ -1,0 +1,8 @@
+*.war
+*.jar
+*.ear
+*.metadata
+*.iml
+*.idea
+*.project
+
