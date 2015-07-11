@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = SsqController.PATH)
-public class SsqController extends BaseController {
+@RequestMapping(value = RollController.PATH)
+public class RollController extends BaseController {
 	protected static final String PATH ="foundation/ssq";
-	private Logger logger = Logger.getLogger(SsqController.class);
+	private Logger logger = Logger.getLogger(RollController.class);
 
 	@RequestMapping(value = "/kill/getNums", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
@@ -59,7 +59,7 @@ public class SsqController extends BaseController {
 			}
 				
 		    
-			List<Roll> rolls =this.serviceManager.getSsqService().getNumbersOfKill(reds, blues, number, sum1, sum2, sort);
+			List<Roll> rolls =this.serviceManager.getRollService().getNumbersOfKill(reds, blues, number, sum1, sum2, sort);
 			soupewebModel.setData(rolls);
 			soupewebModel.setSuccess(true);
 		} catch (Exception ex) {
@@ -78,7 +78,7 @@ public class SsqController extends BaseController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(sort)){
-				List<Roll> rolls =this.serviceManager.getSsqService().findNums(sort, type);
+				List<Roll> rolls =this.serviceManager.getRollService().findNums(sort, type);
 				soupewebModel.setData(rolls);
 			}
 			soupewebModel.setSuccess(true);
@@ -98,7 +98,7 @@ public class SsqController extends BaseController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(ids)){
-                this.serviceManager.getSsqService().deleteNums(ids);
+                this.serviceManager.getRollService().deleteNums(ids);
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){
@@ -150,7 +150,7 @@ public class SsqController extends BaseController {
 			}
 				
 		    
-			List<Roll> rolls =this.serviceManager.getSsqService().getNumbersOfChoose(reds, blues, number, sum1, sum2, sort);
+			List<Roll> rolls =this.serviceManager.getRollService().getNumbersOfChoose(reds, blues, number, sum1, sum2, sort);
 			soupewebModel.setData(rolls);
 			soupewebModel.setSuccess(true);
 		} catch (Exception ex) {
@@ -170,7 +170,7 @@ public class SsqController extends BaseController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(sort)){
-				List<Roll> rolls =this.serviceManager.getSsqService().findNums(sort, type);
+				List<Roll> rolls =this.serviceManager.getRollService().findNums(sort, type);
 				soupewebModel.setData(rolls);
 			}
 			soupewebModel.setSuccess(true);
@@ -190,7 +190,7 @@ public class SsqController extends BaseController {
 		SoupeWebModel soupewebModel = new SoupeWebModel();
 		try{
 			if(!StringUtils.isEmpty(ids)){
-                this.serviceManager.getSsqService().deleteNums(ids);
+                this.serviceManager.getRollService().deleteNums(ids);
 			}
 			soupewebModel.setSuccess(true);
 		}catch(Exception ex){

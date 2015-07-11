@@ -1,7 +1,7 @@
 package com.test.demo;
 
 import com.util.model.PageInfo;
-import com.web.service.SsqService;
+import com.web.service.RollService;
 import com.web.soupe.roll.Roll;
 import com.web.soupe.web.Role;
 import com.web.soupe.web.User;
@@ -17,7 +17,7 @@ public class Test1 extends BaseTestCase {
 
     @Test
     public void rollServiceTest() {
-        SsqService ssqService = this.getServiceManager().getSsqService();
+        RollService ssqService = this.getServiceManager().getRollService();
         System.out.println(ssqService.findNums("1", "kill"));
         System.out.println(ssqService);
 
@@ -41,7 +41,7 @@ public class Test1 extends BaseTestCase {
 
     @Test
     public void testLists() {
-        List<Roll> rolls = this.getServiceManager().getSsqService().findListByJdbcSql(1L);
+        List<Roll> rolls = this.getServiceManager().getRollService().findListByJdbcSql(1L);
         this.showInfoForCollection(rolls);
     }
 

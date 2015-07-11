@@ -1,29 +1,27 @@
 package com.web.service.impl;
 
 import com.web.service.RoleService;
-import com.web.service.SsqService;
+import com.web.service.RollService;
 import com.web.service.UserRoleRelationService;
 import com.web.service.UserService;
-import com.web.soupe.web.UserRoleRelation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service("serviceManager")
 public class ServiceManager{
 	@Autowired
-	private SsqService ssqService ;
+	private RollService rollService;
 	@Autowired
 	private UserService userService;
     @Autowired
     private RoleService roleService;
     @Autowired
     private UserRoleRelationService userRoleRelationService;
-	public SsqService getSsqService() {
-		return ssqService;
+	public RollService getRollService() {
+		return rollService;
 	}
-	public void setSsqService(SsqService ssqService) {
-		this.ssqService = ssqService;
+	public void setRollService(RollService rollService) {
+		this.rollService = rollService;
 	}
 	public UserService getUserService() {
 		return userService;

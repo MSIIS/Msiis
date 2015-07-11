@@ -5,7 +5,7 @@ import com.web.soupe.roll.Roll;
 
 import java.util.List;
 
-public interface SsqService {
+public interface RollService {
 
 	/**
 	 * 双色球杀号方法

@@ -4,7 +4,7 @@ package com.web.service.impl;
 import com.util.model.DataType;
 import com.util.model.QueryRule;
 import com.web.service.BaserService;
-import com.web.service.SsqService;
+import com.web.service.RollService;
 import com.web.soupe.roll.Roll;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import java.util.*;
 
 @Service("ssqServiceImpl")
 @Transactional(readOnly = true)
-public  class SsqServiceImpl  extends BaserService implements SsqService {
+public  class RollServiceImpl extends BaserService implements RollService {
 
 	@Override
 	@Transactional(readOnly = false)
