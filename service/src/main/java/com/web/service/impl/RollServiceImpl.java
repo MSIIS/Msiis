@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.*;
 
-@Service("ssqServiceImpl")
+@Service("rollServiceImpl")
 @Transactional(readOnly = true)
 public  class RollServiceImpl extends BaserService implements RollService {
 
