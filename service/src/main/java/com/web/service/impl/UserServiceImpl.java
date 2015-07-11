@@ -8,6 +8,7 @@ import com.web.service.UserService;
 import com.web.soupe.web.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -56,13 +57,12 @@ public class UserServiceImpl extends BaserService implements UserService {
 
     @Override
     public PageInfo<User> findPageInfoRule(Map<String, String> paramMap) {
-//        QueryRule queryRule = QueryRule.getInstance();
-//        queryRule.addNotEqual("id",0);
-//        queryRule.addAscOrder("id");
-        Integer pageNo=Integer.valueOf(paramMap.get("pageNo"));
-        Integer pageSize = Integer.valueOf(paramMap.get("pageSize"));
-//        return this.getDaoManager().getUserDaoH4().findPageInfo(queryRule,pageNo,pageSize);
-        String hql = "from User where 1=1 and id > ? ";
-        return this.getDaoManager().getUserDaoH4().findPageInfoBySql(hql,pageNo,pageSize,new Object[]{0L},null,null);
+        Integer pageNo = paramMap.get("pageNo")==null?1 :Integer.valueOf(paramMap.get("pageNo"));
+        Integer pageSize = paramMap.get("pageSize")==null?10 :Integer.valueOf(paramMap.get("pageSize"));
+        String hql = "from User where 1=1 ";
+        if(!StringUtils.isEmpty(paramMap.get("userName"))){
+            hql+="  and  userName like "+paramMap.get("userName")+"%";
+        }
+        return this.getDaoManager().getUserDaoH4().findPageInfoBySql(hql,pageNo,pageSize,new Object[]{},null,null);
     }
 }

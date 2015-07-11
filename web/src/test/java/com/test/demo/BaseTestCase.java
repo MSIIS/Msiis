@@ -20,7 +20,7 @@ import java.util.Collection;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:applicationContext.xml","classpath*:spring-servlet.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)
+@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = true)
 public class BaseTestCase {
 
 

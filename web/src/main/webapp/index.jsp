@@ -41,6 +41,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="javascript:void(0);" onclick="index_choose();">双色球</a></li>
                     <li><a href="javascript:void(0);" onclick="dlt();">大乐透</a></li>
+                    <li><a href="javascript:void(0);" onclick="userManage();">用户管理</a></li>
                     <li class="dropdown"><a href="javascript:void(0);"
                                             class="dropdown-toggle" data-toggle="dropdown"> 其他 <b
                             class="caret"></b>

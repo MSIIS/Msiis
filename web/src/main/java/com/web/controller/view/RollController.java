@@ -1,10 +1,11 @@
-package com.web.controller;
+package com.web.controller.view;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.util.model.UrlAccessPrefix;
+import com.web.controller.base.BaseController;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;

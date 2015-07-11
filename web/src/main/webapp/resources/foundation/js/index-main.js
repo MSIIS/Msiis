@@ -8,6 +8,9 @@ function ssq(){
 function dlt(){
 	 $('#index-main').load(contextPath+'/resources/static/jsp/dlt/dlt.jsp');
 }
+function userManage(){
+    $('#index-main').load(contextPath+'/admin/service/user/list');
+}
 
 function qt(){}
 

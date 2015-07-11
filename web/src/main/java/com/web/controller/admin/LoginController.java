@@ -1,4 +1,4 @@
-package com.web.controller;
+package com.web.controller.admin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.util.config.UserConfig;
 import com.util.model.UrlAccessPrefix;
+import com.web.controller.base.BaseController;
 import org.apache.log4j.Logger;
 import com.web.soupe.web.User;
 import org.springframework.stereotype.Controller;
