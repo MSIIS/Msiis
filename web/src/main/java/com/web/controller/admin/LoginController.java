@@ -6,18 +6,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.util.config.UserConfig;
-import com.util.model.UrlAccessPrefix;
-import com.util.myException.MyAuthencationException;
 import com.web.controller.base.BaseController;
 import org.apache.log4j.Logger;
 import com.web.soupe.web.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

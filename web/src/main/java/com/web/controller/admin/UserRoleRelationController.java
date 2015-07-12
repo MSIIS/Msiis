@@ -1,6 +1,6 @@
 package com.web.controller.admin;
 
-import com.util.model.UrlAccessPrefix;
+import com.util.model.UrlPrefix;
 import com.web.controller.base.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = UserRoleRelationController.path)
 public class UserRoleRelationController  extends BaseController {
     private static  final Logger logger = LoggerFactory.getLogger(UserRoleRelationController.class);
-    protected  static  final  String path = UrlAccessPrefix.BACK_STAGE_PATH+"user/";
+    protected  static  final  String path = UrlPrefix.ADMIN_PATH +"user/";
 
     @RequestMapping(value ="add",method = RequestMethod.POST)
     public ModelAndView setUserRoleRelation(HttpServletRequest request){

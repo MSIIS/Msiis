@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.util.model.UrlAccessPrefix;
+import com.util.model.UrlPrefix;
 import com.web.controller.base.BaseController;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = RollController.PATH)
 public class RollController extends BaseController {
-	protected static final String PATH = UrlAccessPrefix.FORE_GROUD_PATH+"roll";
+	protected static final String PATH = UrlPrefix.VIEW_PATH +"roll";
 	private Logger logger = Logger.getLogger(RollController.class);
 
     @RequiresUser
