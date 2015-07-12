@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController extends BaseController {
     private  static  final Logger logger = LoggerFactory.getLogger(IndexController.class);
-    protected  static  final String  path = UrlPrefix.VIEW_PATH;
+    protected  static  final String  path = UrlPrefix.FORE_PATH;
 
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public String index(){

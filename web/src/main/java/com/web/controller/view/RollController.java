@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = RollController.PATH)
 public class RollController extends BaseController {
-	protected static final String PATH = UrlPrefix.VIEW_PATH +"roll";
+	protected static final String PATH = UrlPrefix.FORE_PATH +"roll";
 	private Logger logger = Logger.getLogger(RollController.class);
 
     @RequiresUser
