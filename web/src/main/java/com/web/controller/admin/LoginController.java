@@ -48,6 +48,7 @@ public class LoginController extends BaseController {
     public ModelAndView submit(
             @RequestParam(value = "userName", required = true) String name,
             @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "rememberMe" ,required=false ,defaultValue = "false") boolean remmeberMe,
             HttpServletRequest request) {
         Map<String, String> model = new HashMap<String, String>();
         UsernamePasswordToken token = null;

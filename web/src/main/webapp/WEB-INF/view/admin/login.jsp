@@ -44,6 +44,14 @@
 							</div>
 						</td>
 					</tr>
+                    <tr>
+                        <td align="center" style="border:none">记住我</td>
+                        <td style="border:none">
+                            <div class="input-group">
+                                <input type="checkbox"  name="rememberMe" class="form-control" id="remmber">
+                            </div>
+                        </td>
+                    </tr>
 					<tr >
 						<td align="center" colspan="2" style="border:none"><div>
 						<button type="submit" class="btn btn-primary" id ="sumbit" onclick="submit1()">确定</button>

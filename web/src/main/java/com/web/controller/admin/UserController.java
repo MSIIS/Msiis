@@ -4,10 +4,13 @@ import com.util.model.PageInfo;
 import com.util.model.UrlAccessPrefix;
 import com.web.controller.base.BaseController;
 import com.web.soupe.web.User;
+import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +30,7 @@ public class UserController extends BaseController {
     protected static  final  String PATH= UrlAccessPrefix.BACK_STAGE_PATH+"user/";
     private  static  final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    @RequiresUser
     @RequestMapping(value = "list",method = RequestMethod.GET)
     public String getUserList(
             @RequestParam(value = "userName",required = false) String userName,
