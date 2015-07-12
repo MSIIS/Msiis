@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.util.model.UrlAccessPrefix;
 import com.web.controller.base.BaseController;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;
 import com.web.soupe.roll.Roll;

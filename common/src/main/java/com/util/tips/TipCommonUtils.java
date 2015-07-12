@@ -2,7 +2,7 @@ package com.util.tips;
 
 import com.util.config.BaseConfig;
 import com.util.config.ConfigEnumInter;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 公共提示工具类

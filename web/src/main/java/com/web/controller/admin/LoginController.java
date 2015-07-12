@@ -75,5 +75,12 @@ public class LoginController extends BaseController {
         return "admin/login";
     }
 
+    @RequestMapping(value = "error")
+    public String error(){
+        Subject subject =SecurityUtils.getSubject();
+        subject.logout();
+        return "admin/error";
+    }
+
 
 }

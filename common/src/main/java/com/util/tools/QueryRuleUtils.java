@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.util.model.QueryRule;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;

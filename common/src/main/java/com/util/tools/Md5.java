@@ -1,7 +1,7 @@
 package com.util.tools;
 
 
-import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.util.DigestUtils;
 
 /**
  * MD5加密
@@ -15,7 +15,7 @@ public class Md5 {
             return "";
         }
         try{
-            return DigestUtils.md5Hex(input.getBytes("UTF-8"));
+            return DigestUtils.md5DigestAsHex(input.getBytes("UTF-8"));
         }catch (Exception ex){}
         return "";
     }
