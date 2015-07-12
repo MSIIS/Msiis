@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!--shiro 配置 ,url的配置，其实是请求的URL配置-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="successUrl" value="/admin/index" />
+        <property name="loginUrl" value="/admin/login" />
+        <property name="unauthorizedUrl" value="/admin/login" />
+        <!-- <property name="filters">
+             <map>
+              &lt;!&ndash;   <entry key="authc" value-ref="shiro"></entry>&ndash;&gt;
+             </map>
+         </property>-->
+        <property name="filterChainDefinitions">
+            <value>
+                admin/logout=anon
+                admin/login/**=anon
+                admin/index=anon
+                /error=anon
+                /admin/service/**=authc
+            </value>
+        </property>
+    </bean>
+    <bean id="myRealm"  class="com.web.security.realm.MyRealm"/>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm" />
+        <!-- 需要使用cache的话加上这句  -->
+        <!--<property name="cacheManager" ref="cacheManager" />-->
+    </bean>
+    <!-- 用户授权信息Cache, 采用EhCache，需要的话就配置上此信息 ,可以利用spring自定义个cacheManager-->
+
+
+    <!--以下开启权限注解-->
+    <bean  class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+
+
+    <!-- Shiro生命周期处理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    <!-- shiro为集成spring的处理子类 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">/admin/error</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
