@@ -76,6 +76,7 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" />
+    <bean id="SpringBeanUtils" class="com.util.tools.SpringBeanUtils"></bean>
     <import resource="classpath:spring-config-cache.xml"/>
     <import resource="classpath:spring-config-shiro.xml"/>
 </beans>

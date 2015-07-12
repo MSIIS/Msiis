@@ -18,7 +18,7 @@ import java.util.Collection;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring-config.xml", "classpath*:spring-servlet-mvc.xml"})
+@ContextConfiguration(locations = {"classpath*:spring-config.xml", "classpath*:spring-mvc.xml"})
 @Transactional
 @TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)
 public class BaseTestCase {

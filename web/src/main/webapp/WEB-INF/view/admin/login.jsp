@@ -31,7 +31,7 @@
 						<td align="center" style="border:none"><span>用户名</span></td>
 						<td style="border:none">
 							<div class="input-group">
-								<input type="text" name="name" class="form-control" placeholder="Username" id="name">
+								<input type="text" name="userName" class="form-control" placeholder="Username" id="name">
 							</div>
 						</td>
 					</tr>

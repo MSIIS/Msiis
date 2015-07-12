@@ -46,7 +46,7 @@ public class LoginController extends BaseController {
 
     @RequestMapping(value = "login/submit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView submit(
-            @RequestParam(value = "name", required = true) String name,
+            @RequestParam(value = "userName", required = true) String name,
             @RequestParam(value = "password", required = true) String password,
             HttpServletRequest request) {
         Map<String, String> model = new HashMap<String, String>();
