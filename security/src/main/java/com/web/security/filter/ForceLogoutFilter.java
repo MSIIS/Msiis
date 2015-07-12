@@ -9,8 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-3-16
+ * <p>User: gzh
  * <p>Version: 1.0
  */
 public class ForceLogoutFilter extends AccessControlFilter {
