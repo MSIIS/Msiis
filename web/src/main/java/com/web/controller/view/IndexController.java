@@ -12,17 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by lenovo on 2015/7/12.
  */
 @Controller
+@RequestMapping(value = IndexController.path)
 public class IndexController extends BaseController {
     private  static  final Logger logger = LoggerFactory.getLogger(IndexController.class);
     protected  static  final String  path = UrlPrefix.FORE_PATH;
 
-    @RequestMapping(value = "index",method = RequestMethod.GET)
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(){
-        return   "index";
+        return   UrlPrefix.FORE_VIEW_PAGE+"index";
     }
-    @RequestMapping(method = RequestMethod.GET)
-    public String toindex(){
-        return   "index";
+    @RequestMapping(value="",method = RequestMethod.GET)
+    public String toIndex(){
+        return  UrlPrefix.FORE_VIEW_PAGE+ "index";
     }
 
 }

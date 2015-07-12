@@ -371,6 +371,11 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.7.4</version>
             </dependency>
+            <dependency>
+                <groupId>org.sitemesh</groupId>
+                <artifactId>sitemesh</artifactId>
+                <version>3.0.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

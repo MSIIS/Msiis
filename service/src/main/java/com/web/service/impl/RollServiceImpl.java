@@ -6,9 +6,9 @@ import com.util.model.QueryRule;
 import com.web.service.BaserService;
 import com.web.service.RollService;
 import com.web.soupe.roll.Roll;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
 
@@ -98,8 +98,12 @@ public  class RollServiceImpl extends BaserService implements RollService {
 	@Override
 	public List<Roll> findNums(String sort, String dataType) {
 		QueryRule queryRule = QueryRule.getInstance();
-		queryRule.addEqual("dataSourceType", dataType);
-		queryRule.addLike("numberFiel", sort+"%");
+        if(StringUtils.isNotEmpty(dataType)){
+            queryRule.addEqual("dataSourceType", dataType);
+        }
+        if(StringUtils.isNotEmpty(sort)){
+            queryRule.addLike("numberFiel", sort+"%");
+        }
 		return daoManager.getRollDaoH4().find(queryRule);
 	}
 
@@ -107,7 +111,7 @@ public  class RollServiceImpl extends BaserService implements RollService {
 	@Transactional(readOnly = false)
 	public void deleteNums(String ids) {
 		List<Long> list = new ArrayList<Long>();
-		if (!StringUtils.isEmpty(ids)) {
+		if (StringUtils.isNotEmpty(ids)) {
 			String[] array = ids.split(",");
 			for (String id : array) {
 				list.add(Long.parseLong(id));

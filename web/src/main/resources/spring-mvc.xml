@@ -36,8 +36,7 @@
     <!-- 静态资源的访问 -->
     <mvc:resources location="/resources/" mapping="/resources/**" />
     <mvc:view-controller path="/admin" view-name="redirect:/admin/index"/>
-    <mvc:view-controller path="/" view-name="redirect:/view/index"/>
-
+    <mvc:view-controller path="/" view-name="redict:/view/index"></mvc:view-controller>
     <!-- 启动spring mvc的注解功能，完成请求和注解POJO的映射 -->
     <!-- 上传文件时需要用到的分解器，默认将编码转为utf-8 -->
     <bean id="multipartResolver"

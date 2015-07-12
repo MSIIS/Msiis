@@ -16,7 +16,7 @@ function getNum(){
 			sum:sum,
 			sort:sort
 	};
-	var url=contextPath+'/view/roll/kill/getNums';
+	var url=contextPath+'/view/roll/kill';
 	myAjax("post", url, params,callSSQ,"json");
 }
 function callSSQ(data){
@@ -53,10 +53,7 @@ function findNums(){
 		alert("期号未填写！");
 		return;
 	}
-	var params={sort:sort,type:type};
-	var url=contextPath+'/view/roll/kill/findNums';
-	myAjax("get", url, params,callSSQ,"json");
-	
+	$('ssq').submit();
 }
 
 function deleteNums(){
@@ -71,7 +68,7 @@ function deleteNums(){
 	   return;
 	}
 	var params={ids:ids.join()};
-	var url=contextPath+'/view/roll/kill/deleteNums';
+	var url=contextPath+'/view/roll/kill/delete';
 	myAjax("post", url, params,callSSQ,"json");
 	
 }

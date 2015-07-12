@@ -112,6 +112,7 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
+                view/**=anon
                 admin/logout=anon
                 admin/login/**=anon
                 admin/index=anon

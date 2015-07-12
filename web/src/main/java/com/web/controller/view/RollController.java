@@ -12,6 +12,7 @@ import com.web.soupe.dto.SoupeWebModel;
 import com.web.soupe.roll.Roll;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,11 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = RollController.PATH)
 public class RollController extends BaseController {
-	protected static final String PATH = UrlPrefix.FORE_PATH +"roll";
+	protected static final String PATH = UrlPrefix.FORE_PATH +"/roll/";
 	private Logger logger = Logger.getLogger(RollController.class);
 
-    @RequiresUser
-	@RequestMapping(value = "/kill/getNums", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "kill", method = {RequestMethod.POST})
 	@ResponseBody
 	public SoupeWebModel submit(
 			@RequestParam(value = "red", required = false) String red,
@@ -74,28 +74,26 @@ public class RollController extends BaseController {
 		return soupewebModel;
 	}
 
-	@RequestMapping(value="/kill/findNums",method=RequestMethod.GET)
-	@ResponseBody
-	public SoupeWebModel findNums(@RequestParam(value = "sort", required = false) String sort,
+	@RequestMapping(value="kill",method=RequestMethod.GET)
+	public String findNums(
+            @RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "type", required = false) String type,
-			HttpServletRequest request){
-		SoupeWebModel soupewebModel = new SoupeWebModel();
+			HttpServletRequest request,Model model){
+        List<Roll> rolls =null;
 		try{
 			if(!StringUtils.isEmpty(sort)){
-				List<Roll> rolls =this.serviceManager.getRollService().findNums(sort, type);
-				soupewebModel.setData(rolls);
+				rolls =this.serviceManager.getRollService().findNums(sort, type);
 			}
-			soupewebModel.setSuccess(true);
-		}catch(Exception ex){
-			logger.error("获取双色球信息出错，，" + ex.getMessage(), ex);
-			soupewebModel.setMessage(ex.getMessage());
+            model.addAttribute("data",rolls);
+        }catch(Exception ex){
+            logger.error("获取双色球信息出错，，" + ex.getMessage(), ex);
 		}
-	     return soupewebModel;
+	     return "page/ssq-kill";
 		
 	}
 
 
-	@RequestMapping(value="/kill/deleteNums",method=RequestMethod.POST)
+	@RequestMapping(value="/kill/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public SoupeWebModel delete(@RequestParam(value = "ids", required = false) String ids,
 			HttpServletRequest request){
@@ -115,7 +113,7 @@ public class RollController extends BaseController {
 	
 	
 	
-	@RequestMapping(value = "/choose/getNums", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/choose/list", method = {RequestMethod.POST})
 	@ResponseBody
 	public SoupeWebModel submitOfChoose(
 			@RequestParam(value = "red", required = false) String red,
@@ -166,7 +164,7 @@ public class RollController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value="/choose/findNums",method=RequestMethod.GET)
+	@RequestMapping(value="/choose/list",method=RequestMethod.GET)
 	@ResponseBody
 	public SoupeWebModel findNumsOfChoose(@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "type", required = false) String type,
@@ -187,7 +185,7 @@ public class RollController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value="/choose/deleteNums",method=RequestMethod.POST)
+	@RequestMapping(value="/choose/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public SoupeWebModel deleteOfChoose(@RequestParam(value = "ids", required = false) String ids,
 			HttpServletRequest request){
