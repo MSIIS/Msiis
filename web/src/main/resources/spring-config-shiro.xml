@@ -32,7 +32,7 @@
    <!--自定义realM，实现于数据库数据验证-->
     <bean id="myRealm"  class="com.web.security.realm.MyRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
-        <property name="cachingEnabled" value="false"/>
+        <property name="cachingEnabled" value="true"/>
     </bean>
     <!-- 会话ID生成器 -->
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
@@ -115,8 +115,7 @@
             <value>
                 view/**=anon
                 admin/logout=anon
-                admin/login/**=anon
-                admin/index=anon
+                admin/login=anon
                 /error=anon
             </value>
         </property>
