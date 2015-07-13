@@ -91,6 +91,7 @@
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
     <bean id="sysUserFilter" class="com.web.security.filter.SysUserFilter"/>
     <bean id="forceLogoutFilter" class="com.web.security.filter.ForceLogoutFilter"/>
+    <bean id="roleFilter" class="com.web.security.filter.MyRolesAuthorizationFilter"></bean>
     <!-- 基于Form表单的身份验证过滤器 -->
     <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
         <property name="usernameParam" value="userName"/>
@@ -109,6 +110,7 @@
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
                 <entry key="sysUser" value-ref="sysUserFilter"/>
                 <entry key="forceLogout" value-ref="forceLogoutFilter"/>
+                <entry key="roles" value-ref="roleFilter"></entry>
             </util:map>
         </property>
         <property name="filterChainDefinitions">
