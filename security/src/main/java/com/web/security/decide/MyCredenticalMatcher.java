@@ -38,12 +38,11 @@ public class MyCredenticalMatcher extends HashedCredentialsMatcher {
         if(retryCount.incrementAndGet() > 5) {
             throw new ExcessiveAttemptsException();
         }
-        return true;
-       /* boolean matches = super.doCredentialsMatch(token, info);
+        boolean matches = super.doCredentialsMatch(token, info);
         if(matches) {
             //clear retry count
             passwordRetryCache.remove(username);
         }
-        return matches;*/
+        return matches;
     }
 }

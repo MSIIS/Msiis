@@ -55,6 +55,7 @@ public class Test1 extends BaseTestCase {
             user.setUserName("admin" + i);
             user.setRealName("大侠");
             user.setNickName("菜苗 "+i);
+            user.setSalt("abc");
             user.setStatus(1);
             user.setDeleted(false);
             users.add(user);

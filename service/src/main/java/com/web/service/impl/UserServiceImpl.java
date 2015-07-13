@@ -4,8 +4,10 @@ package com.web.service.impl;
 import com.util.model.PageInfo;
 import com.util.model.QueryRule;
 import com.web.service.BaserService;
+import com.web.service.PasswordHelper;
 import com.web.service.UserService;
 import com.web.soupe.web.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -19,11 +21,12 @@ import java.util.Map;
 @Service("userServiceImpl")
 @Transactional(readOnly=true)
 public class UserServiceImpl extends BaserService implements UserService {
-
-
+    @Autowired
+    private PasswordHelper passwordHelper;
     @Override
     @Transactional(readOnly = false)
     public void insertBatch(List<User> userList) {
+       passwordHelper.encrypPasswordUsers(userList);
        this.getDaoManager().getUserDaoH4().insertBatchH(userList);
     }
     @Override
@@ -58,12 +61,14 @@ public class UserServiceImpl extends BaserService implements UserService {
     @Override
     @Transactional(readOnly = false)
     public void save(Collection<User> users) {
+        passwordHelper.encrypPasswordUsers(users);
         this.getDaoManager().getUserDaoH4().saveAll(users);
     }
 
     @Override
     @Transactional(readOnly = false)
     public void save(User u) {
+        passwordHelper.encryptPassword(u);
         this.getDaoManager().getUserDaoH4().save(u);
     }
 

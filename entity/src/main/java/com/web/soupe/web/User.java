@@ -28,6 +28,10 @@ public class User extends SimpleProperty implements Serializable {
     //密码
     @Column(name = "password", nullable = false)
     private String password;
+
+    //用户盐
+    @Column(name="salt")
+    private String salt ;
     //昵称
     @Column(name="nick_name",nullable = false,unique = true)
     private  String nickName ;
@@ -87,5 +91,13 @@ public class User extends SimpleProperty implements Serializable {
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

@@ -31,7 +31,6 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
 
     @Autowired
     private UserService userService;
-
     @Autowired
     @Qualifier("myCacheManager")
     private CacheManager cacheManager;
@@ -70,17 +69,15 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
             throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         String userName=token.getUsername();
-        String password =String.valueOf(token.getPassword());
-         User user =userService.findUserByNameAndPassword(userName,password,1);
+         User user =userService.findUserByNameAndPassword(userName,"",1);
         if (user == null) {
             throw new AuthenticationException();
         }
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),
                 user.getPassword(),
-                ByteSource.Util.bytes("abc123")
+                ByteSource.Util.bytes(user.getSalt())
                 ,user.getRealName());
-        cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).put(UserCacheConf.USER_NAME+user.getId(),user.getUserName());
         return info;
     }
 
