@@ -12,6 +12,7 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.CacheManagerAware;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -126,4 +127,5 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
     public void setCacheManager(CacheManager cacheManager) {
         this.cacheManager = cacheManager;
     }
+
 }

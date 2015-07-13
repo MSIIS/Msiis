@@ -74,6 +74,7 @@ public class LoginController extends BaseController {
             return new ModelAndView("admin/login", "message", null);
         } catch (Exception ex) {
             logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+            return new ModelAndView("admin/login", "message", null);
         }
         return new ModelAndView("admin/index", model);
     }
