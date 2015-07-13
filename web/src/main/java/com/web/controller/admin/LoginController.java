@@ -65,6 +65,7 @@ public class LoginController extends BaseController {
                 token = new UsernamePasswordToken(name, password);
                 token.setRememberMe(false);
                 currentUser.login(token);
+                request.getSession().setAttribute(UserConfig.USER_LOGON_SESSION.getCode(),user);
             }
             System.out.println(cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).get(UserCacheConf.USER_NAME+user.getId()));
 

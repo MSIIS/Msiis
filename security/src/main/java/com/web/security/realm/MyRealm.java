@@ -18,6 +18,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -73,33 +74,56 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
         if (user == null) {
             throw new AuthenticationException();
         }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),user.getRealName());
-        this.setSession(UserConfig.USER_LOGON_SESSION.getCode(), user);
+        //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),
+                user.getPassword(),
+                ByteSource.Util.bytes("abc123")
+                ,user.getRealName());
         cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).put(UserCacheConf.USER_NAME+user.getId(),user.getUserName());
         return info;
     }
-    /**
-     * 将一些数据放到ShiroSession中,以便于其它地方使用
-     *
-     * 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到
-     */
-    private void setSession(Object key, Object value) {
-        Subject currentUser = SecurityUtils.getSubject();
-        if (null != currentUser) {
-            Session session = currentUser.getSession();
-            if (null != session) {
-                session.setAttribute(key, value);
-            }
-        }
+
+    @Override
+    public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+    }
+
+    @Override
+    public void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthenticationInfo(principals);
+    }
+
+    @Override
+    public void clearCache(PrincipalCollection principals) {
+        super.clearCache(principals);
+    }
+
+    public void clearAllCachedAuthorizationInfo() {
+        getAuthorizationCache().clear();
+    }
+
+    public void clearAllCachedAuthenticationInfo() {
+        getAuthenticationCache().clear();
+    }
+
+    public void clearAllCache() {
+        clearAllCachedAuthenticationInfo();
+        clearAllCachedAuthorizationInfo();
     }
 
     public UserService getUserService() {
         return userService;
     }
 
-
-
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public CacheManager getCacheManager() {
+        return cacheManager;
+    }
+
+    public void setCacheManager(CacheManager cacheManager) {
+        this.cacheManager = cacheManager;
     }
 }
