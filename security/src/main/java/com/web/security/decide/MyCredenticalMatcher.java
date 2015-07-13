@@ -14,11 +14,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>User: gzh
  * <p>Version: 1.0
  */
-public class SignTokenMatcher extends HashedCredentialsMatcher {
+public class MyCredenticalMatcher extends HashedCredentialsMatcher {
 
     private Cache<String, AtomicInteger> passwordRetryCache;
 
-    public SignTokenMatcher(CacheManager cacheManager) {
+    public MyCredenticalMatcher(CacheManager cacheManager) {
         passwordRetryCache = cacheManager.getCache("passwordRetryCache");
     }
 

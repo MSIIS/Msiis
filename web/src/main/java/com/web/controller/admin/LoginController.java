@@ -66,7 +66,7 @@ public class LoginController extends BaseController {
                 token.setRememberMe(false);
                 currentUser.login(token);
             }
-            System.out.println(cacheManager.getCache(CacheNameSpace.AUTHORIZATION_CACHE).get(UserCacheConf.USER_NAME+user.getId()));
+            System.out.println(cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).get(UserCacheConf.USER_NAME+user.getId()));
 
         } catch (AuthenticationException a) {
             token.clear();

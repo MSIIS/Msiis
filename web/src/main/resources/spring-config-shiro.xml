@@ -23,7 +23,7 @@
     </bean>
 
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="com.web.security.decide.SignTokenMatcher">
+    <bean id="credentialsMatcher" class="com.web.security.decide.MyCredenticalMatcher">
         <constructor-arg ref="myCacheManager"/>
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="2"/>

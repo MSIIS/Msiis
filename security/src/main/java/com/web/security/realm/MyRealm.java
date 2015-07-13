@@ -46,7 +46,6 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
         /*User user = (User)principals.fromRealm(getName()).iterator().next();*/
-
         String name = (String) getAvailablePrincipal(principals);
         Set<String> roles = new HashSet<String>();
         User user =userService.findUserByNameAndPassword(name,"",1);
@@ -76,7 +75,7 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
         }
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),user.getRealName());
         this.setSession(UserConfig.USER_LOGON_SESSION.getCode(), user);
-        cacheManager.getCache(CacheNameSpace.AUTHORIZATION_CACHE).put(UserCacheConf.USER_NAME+user.getId(),user.getUserName());
+        cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).put(UserCacheConf.USER_NAME+user.getId(),user.getUserName());
         return info;
     }
     /**
