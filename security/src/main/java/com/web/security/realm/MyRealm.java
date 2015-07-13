@@ -1,34 +1,39 @@
 package com.web.security.realm;
 
 import com.util.config.UserConfig;
+import com.web.security.cache.CacheManageUtils;
+import com.web.security.cache.CacheNameSpace;
+import com.web.security.cache.UserCacheConf;
 import com.web.service.UserService;
-import com.web.soupe.web.Role;
 import com.web.soupe.web.User;
 import com.web.soupe.web.UserRoleRelation;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.cache.CacheManagerAware;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-import javax.management.relation.Relation;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Component
-public class MyRealm extends AuthorizingRealm {
+public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
+
     @Autowired
     private UserService userService;
+
+    @Autowired
+    @Qualifier("myCacheManager")
+    private CacheManager cacheManager;
+
 
     /*
      *获取了当前登录用户的角色信息。
@@ -41,7 +46,6 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
         /*User user = (User)principals.fromRealm(getName()).iterator().next();*/
-
         String name = (String) getAvailablePrincipal(principals);
         Set<String> roles = new HashSet<String>();
         User user =userService.findUserByNameAndPassword(name,"",1);
@@ -70,7 +74,8 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthenticationException();
         }
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),user.getRealName());
-        this.setSession(UserConfig.USER_LOGON_SESSION.getCode(),user);
+        this.setSession(UserConfig.USER_LOGON_SESSION.getCode(), user);
+        cacheManager.getCache(CacheNameSpace.AUTHENTICATION_CACHE).put(UserCacheConf.USER_NAME+user.getId(),user.getUserName());
         return info;
     }
     /**
@@ -91,6 +96,8 @@ public class MyRealm extends AuthorizingRealm {
     public UserService getUserService() {
         return userService;
     }
+
+
 
     public void setUserService(UserService userService) {
         this.userService = userService;

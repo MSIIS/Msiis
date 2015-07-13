@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:cache="http://www.springframework.org/schema/cache" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <!-- 凭证匹配器 -->
 
+    <!-- 用户授权信息Cache, 采用EhCache，需要的话就配置上此信息 ,可以利用spring自定义个cacheManager-->
     <bean id="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
         <property name="cacheManager" ref="ehcacheManager"/>
     </bean>
@@ -16,13 +16,14 @@
     <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
         <property name="configLocation" value="classpath:cache/ehcache.xml"/>
     </bean>
-    <!-- 用户授权信息Cache, 采用EhCache，需要的话就配置上此信息 ,可以利用spring自定义个cacheManager-->
+
     <!-- 缓存管理器 -->
     <bean id="myCacheManager" class="com.web.security.cache.SpringCacheManagerWrapper">
         <property name="cacheManager" ref="springCacheManager"/>
     </bean>
 
-    <bean id="credentialsMatcher" class="com.web.security.decide.SignTokenMatcher">
+    <!-- 凭证匹配器 -->
+    <bean id="credentialsMatcher" class="com.web.security.decide.MyCredenticalMatcher">
         <constructor-arg ref="myCacheManager"/>
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="2"/>
@@ -31,7 +32,7 @@
    <!--自定义realM，实现于数据库数据验证-->
     <bean id="myRealm"  class="com.web.security.realm.MyRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
-        <property name="cachingEnabled" value="false"/>
+        <property name="cachingEnabled" value="true"/>
     </bean>
     <!-- 会话ID生成器 -->
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
@@ -114,8 +115,7 @@
             <value>
                 view/**=anon
                 admin/logout=anon
-                admin/login/**=anon
-                admin/index=anon
+                admin/login=anon
                 /error=anon
             </value>
         </property>

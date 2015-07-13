@@ -3,8 +3,8 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns="http://www.springframework.org/schema/beans"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
@@ -36,7 +36,7 @@
     <!-- 静态资源的访问 -->
     <mvc:resources location="/resources/" mapping="/resources/**" />
     <mvc:view-controller path="/admin" view-name="redirect:/admin/index"/>
-    <mvc:view-controller path="/" view-name="redict:/view/index"></mvc:view-controller>
+    <mvc:view-controller path="/" view-name="redirect:/view/index"></mvc:view-controller>
     <!-- 启动spring mvc的注解功能，完成请求和注解POJO的映射 -->
     <!-- 上传文件时需要用到的分解器，默认将编码转为utf-8 -->
     <bean id="multipartResolver"
