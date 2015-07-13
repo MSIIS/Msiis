@@ -8,8 +8,11 @@
         <pattern>/images/*</pattern>
         <pattern>/image/*</pattern>
     </excludes>
+    <!--根据请求是的URL过滤-->
     <decorator name="view.index" page="default.jsp">
+        <pattern>/view</pattern>
         <pattern>/view/*</pattern>
+
     </decorator>
     <decorator name="admin.index" page="admin-decorate.jsp"/>
 </decorators>
