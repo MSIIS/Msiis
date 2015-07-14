@@ -1,9 +1,6 @@
 package com.web.service.impl;
 
-import com.web.service.RoleService;
-import com.web.service.RollService;
-import com.web.service.UserRoleOrgRelationService;
-import com.web.service.UserService;
+import com.web.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +14,8 @@ public class ServiceManager{
     private RoleService roleService;
     @Autowired
     private UserRoleOrgRelationService userRoleOrgRelationService;
+    @Autowired
+    private OrganizationService organizationService;
 	public RollService getRollService() {
 		return rollService;
 	}

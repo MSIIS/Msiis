@@ -2,6 +2,7 @@ package com.web.service;
 
 import com.web.soupe.web.Role;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -9,5 +10,12 @@ import java.util.List;
  */
 public interface RoleService {
     Role findById(Long id);
+
     List<Role> findListByIds(List<Long> ids);
+
+    void save(Role role);
+
+    void delete(Long id);
+
+    void deleteByIds(Collection<Long> ids);
 }

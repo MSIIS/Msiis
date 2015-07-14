@@ -3,6 +3,9 @@ package com.web.dao.Hdao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * soupe-dao manager  平台部分所用
+ */
 
 @Component("daoManager")
 public class DaoManager {
@@ -13,6 +16,12 @@ public class DaoManager {
 
     @Autowired
     private RoleDaoH4 roleDaoH4;
+
+    @Autowired
+    private OrganizationDaoH4 organizationDaoH4;
+
+    @Autowired
+    private PermissionDaoH4 permissionDaoH4;
 
     @Autowired
     private UserRoleOrgRelationDaoH4 userRoleOrgRelationDaoH4;
@@ -47,5 +56,21 @@ public class DaoManager {
 
     public void setUserRoleOrgRelationDaoH4(UserRoleOrgRelationDaoH4 userRoleRelationDaoH4) {
         this.userRoleOrgRelationDaoH4 = userRoleRelationDaoH4;
+    }
+
+    public OrganizationDaoH4 getOrganizationDaoH4() {
+        return organizationDaoH4;
+    }
+
+    public void setOrganizationDaoH4(OrganizationDaoH4 organizationDaoH4) {
+        this.organizationDaoH4 = organizationDaoH4;
+    }
+
+    public PermissionDaoH4 getPermissionDaoH4() {
+        return permissionDaoH4;
+    }
+
+    public void setPermissionDaoH4(PermissionDaoH4 permissionDaoH4) {
+        this.permissionDaoH4 = permissionDaoH4;
     }
 }
