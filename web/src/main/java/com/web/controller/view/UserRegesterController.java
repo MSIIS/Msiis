@@ -4,7 +4,6 @@ import com.util.model.UrlPrefix;
 import com.web.controller.base.BaseController;
 import com.web.service.OrganizationService;
 import com.web.service.UserService;
-import com.web.soupe.dto.SoupeConst;
 import com.web.soupe.dto.SoupeWebModel;
 import com.web.soupe.web.Organization;
 import com.web.soupe.web.User;
@@ -86,11 +85,10 @@ public class UserRegesterController extends BaseController {
         List<Organization> organizations =null;
         try{
            organizations=this.getServiceManager().getOrganizationService().getAllList(0);
-
+           model.addAttribute("selectOrgs",organizations);
         }catch (Exception ex){
             logger.error(ex.getMessage());
         }
-        model.addAttribute("selectOrgs",organizations);
         return  UrlPrefix.FORE_VIEW_PAGE+"register";
     }
 }
