@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by lenovo on 2015/7/9.
  */
-@Service("userRoleRelationServiceImpl")
+@Service("userRoleOrgRelationServiceImpl")
 @Transactional(readOnly = true)
-public class UserRoleRelationServiceImpl implements UserRoleOrgRelationService{
+public class UserRoleOrgRelationServiceImpl implements UserRoleOrgRelationService{
 
     @Autowired
     private DaoManager daoManager;

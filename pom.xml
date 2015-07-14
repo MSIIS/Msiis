@@ -417,6 +417,14 @@
                         </warSourceExcludes>
                     </configuration>
                 </plugin>
+                <!-- 跳过单元测试 ，节省编译时间-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <resources>
@@ -436,7 +444,10 @@
             </testResource>
         </testResources>
 
+
+
     </build>
+
 
 
 </project>

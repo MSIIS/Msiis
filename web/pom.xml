@@ -70,16 +70,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <!-- 不想打进的jar，以逗号分开 -->
-                <configuration>
-                    <packagingExcludes>
-                        WEB-INF/lib/rt-1.7.jar,
-                        WEB-INF/lib/tomcat-servlet-api-7.0.47.jar,
-                        WEB-INF/lib/sqljdbc-4.jar
-                    </packagingExcludes>
-                    <warSourceExcludes>
-                        sql/**
-                    </warSourceExcludes>
-                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
