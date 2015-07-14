@@ -13,8 +13,8 @@ import java.io.Serializable;
 @Entity
 @DynamicInsert(true)
 @DynamicUpdate(true)
-@Table(name = "soupe_res_permission", catalog = "apple")
-public class ResourcePermission extends SimpleProperty implements Serializable {
+@Table(name = "soupe_permission", catalog = "apple")
+public class Permission extends SimpleProperty implements Serializable {
     private static final long serialVersionUID = -8662431340218255008L;
 
     @Id
@@ -31,7 +31,7 @@ public class ResourcePermission extends SimpleProperty implements Serializable {
     @Column(name="res_name")
     private String  res_name;
 
-    public ResourcePermission() {
+    public Permission() {
     }
 
     public int getId() {

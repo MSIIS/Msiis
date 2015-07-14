@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by lenovo on 2015/7/9.
  */
 @Entity
-@Table(name="user_role_relation",catalog = "apple")
+@Table(name="soupe_user_role",catalog = "apple")
 public class UserRoleRelation  implements Serializable{
 
     private static final long serialVersionUID = -6870397565109005129L;
