@@ -73,4 +73,5 @@ public class DaoManager {
     public void setPermissionDaoH4(PermissionDaoH4 permissionDaoH4) {
         this.permissionDaoH4 = permissionDaoH4;
     }
+
 }

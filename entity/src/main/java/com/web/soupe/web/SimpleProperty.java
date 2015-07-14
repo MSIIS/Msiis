@@ -21,7 +21,7 @@ public abstract class SimpleProperty implements Serializable {
     public Date createTime;
 
     /**
-     * 0:禁用，1正常，2冻结
+     * 0:禁用，1正常
      */
     @Column(name ="status",nullable = false)
     public int status =0 ;

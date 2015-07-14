@@ -1,10 +1,12 @@
 package com.web.soupe.web;
 
+import com.web.soupe.dto.SoupeConst;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +49,9 @@ public class User extends SimpleProperty implements Serializable {
     private List<UserRoleOrgRelation> userRoleOrgRelations;
 
     public User() {
+        this.setDeleted(false);
+        this.setStatus(SoupeConst.STATUS_OK);
+        this.setCreateTime(new Date());
     }
 
     public Long getId() {

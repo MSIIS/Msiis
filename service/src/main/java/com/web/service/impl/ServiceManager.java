@@ -44,4 +44,12 @@ public class ServiceManager{
     public void setUserRoleOrgRelationService(UserRoleOrgRelationService userRoleOrgRelationService) {
         this.userRoleOrgRelationService = userRoleOrgRelationService;
     }
+
+    public OrganizationService getOrganizationService() {
+        return organizationService;
+    }
+
+    public void setOrganizationService(OrganizationService organizationService) {
+        this.organizationService = organizationService;
+    }
 }

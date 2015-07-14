@@ -7,6 +7,7 @@ import com.web.service.BaserService;
 import com.web.service.PasswordHelper;
 import com.web.service.UserService;
 import com.web.soupe.web.User;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,18 @@ public class UserServiceImpl extends BaserService implements UserService {
        passwordHelper.encrypPasswordUsers(userList);
        this.getDaoManager().getUserDaoH4().insertBatchH(userList);
     }
+
+    @Override
+    public boolean checkExists(String userName, String nickName) {
+        QueryRule queryRule =QueryRule.getInstance();
+        queryRule.addOr(Restrictions.eq("userName",userName),Restrictions.eq("nickName",nickName));
+        List<User> users =this.getDaoManager().getUserDaoH4().find(queryRule);
+        if(CollectionUtils.isEmpty(users)){
+            return  false;
+        }
+        return true;
+    }
+
     @Override
     public User findUserByNameAndPassword(String name, String password,int status) {
         QueryRule queryRule =QueryRule.getInstance();
