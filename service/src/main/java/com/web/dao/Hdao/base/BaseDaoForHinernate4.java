@@ -29,6 +29,7 @@ import org.springframework.util.CollectionUtils;
 
 
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializable> implements  IBaseDao<T, PK>{
 
 	// 泛型反射类
