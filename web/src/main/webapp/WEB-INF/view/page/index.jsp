@@ -11,7 +11,7 @@
     %>
     <title>I乐平台</title>
     <script type="text/javascript"
-            src="<%=contextPath%>/resources/foundation/js/index-main.js"></script>
+            src="<%=contextPath%>/resources/view/js/index-main.js"></script>
 </head>
 <body background="#fff">
 <nav class="navbar navbar-inverse" role="navigation ">

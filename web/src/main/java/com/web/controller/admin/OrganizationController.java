@@ -21,22 +21,5 @@ public class OrganizationController extends BaseController {
     protected static  final  String PATH= UrlPrefix.ADMIN_PATH +"org/";
     private  static  final Logger logger = LoggerFactory.getLogger(OrganizationController.class);
 
-    @RequestMapping(value = "select/list")
-    public SoupeWebModel getOrgChildrenList(
-            @RequestParam(value = "parent_id") Integer parendId){
-        SoupeWebModel soupeWebModel=new SoupeWebModel();
-        try{
-            if(parendId==null||parendId<0){
-                parendId=0;
-            }
-            List<Organization> organizations =this.getServiceManager().
-                    getOrganizationService().getAllList(parendId);
-            soupeWebModel.setData(organizations);
-            soupeWebModel.setSuccess(true);
-        }catch (Exception ex){
-            logger.error(ex.getMessage());
-        }
-        return soupeWebModel;
-    }
 
 }

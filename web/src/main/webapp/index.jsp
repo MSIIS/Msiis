@@ -11,7 +11,7 @@
     <link rel="stylesheet"
           href="<%=contextPath%>/resources/bootstrap/css/bootstrap-theme.min.css">
     <link rel="stylesheet"
-          href="<%=contextPath%>/resources/foundation/css/admin.css">
+          href="<%=contextPath%>/resources/view/css/admin.css">
     <script type="text/javascript"
             src="<%=contextPath%>/resources/jquery/jquery-2.1.1.min.js"></script>
     <script type="text/javascript"

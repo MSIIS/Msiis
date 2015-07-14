@@ -9,7 +9,7 @@
     String contextPath = request.getContextPath();
 %>
 <script type="text/javascript" src="<%=contextPath%>/resources/util/com-submit.js"></script>
-<script type="text/javascript" src="<%=contextPath%>/resources/foundation/js/ssq/ssq-choose.js"></script>	
+<script type="text/javascript" src="<%=contextPath%>/resources/view/js/ssq/ssq-choose.js"></script>
 </head>
 <body>
 <label for="ssqform"><Strong>双色球精选</Strong></label>
