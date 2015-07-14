@@ -17,7 +17,6 @@ import java.util.List;
  * Created by nlf on 2015-7-8.
  */
 public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
-    private  static final Logger logger = Logger.getLogger(BeanUtils.class);
 
     /**
      * <b>获取Field</b>
@@ -96,7 +95,7 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
         try {
             field.set(object, newValue);
         } catch (IllegalAccessException e) {
-            logger.info("Error won't happen");
+            e.printStackTrace();
         }
         field.setAccessible(accessible);
     }
@@ -201,7 +200,7 @@ public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
         try {
             return type.getMethod(getGetterName(type, fieldName), new Class[0]);
         } catch (NoSuchMethodException e) {
-            logger.error(e.getMessage(),e);
+            e.printStackTrace();
         }
         return null;
     }

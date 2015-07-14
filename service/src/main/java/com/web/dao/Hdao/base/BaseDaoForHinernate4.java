@@ -30,17 +30,20 @@ import org.springframework.util.CollectionUtils;
 
 public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializable> implements  IBaseDao<T, PK>{
 
-	// 日志输出类
-
-	protected static final Logger LOGGER = LoggerFactory
-			.getLogger(BaseDaoForHinernate4.class);
-
 	// 泛型反射类
 
 	protected Class<T> entityClass;
 	
 	
 	// 通过反射获取子类确定的泛型类
+	/**
+	 *
+	 * 注入sessionFactory
+	 */
+
+	@Autowired
+	@Qualifier("sessionFactory")
+	private SessionFactory sessionFactory;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public BaseDaoForHinernate4() {
@@ -52,15 +55,6 @@ public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializabl
 		entityClass = (Class) params[0];
 
 	}
-
-	/**
-	 * 
-	 * 注入sessionFactory
-	 */
-
-	@Autowired
-	@Qualifier("sessionFactory")
-	private SessionFactory sessionFactory;
 
 	public Session getSession() {
 
