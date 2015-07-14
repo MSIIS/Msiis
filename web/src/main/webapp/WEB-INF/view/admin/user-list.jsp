@@ -19,7 +19,7 @@
        <td>${user.id}</td>
         <td>${user.userName}</td>
          <td>
-             <c:forEach items="${user.userRoleRelationList}" var="relation" varStatus="relatst"  >
+             <c:forEach items="${user.userRoleOrgRelationList}" var="relation" varStatus="relatst"  >
                  <div>${relation.role.name}</div>
              </c:forEach>
 

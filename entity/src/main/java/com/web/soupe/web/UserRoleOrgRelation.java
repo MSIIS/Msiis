@@ -6,12 +6,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * 用户-角色关系表
+ * 用户-角色关系-授权组织表表
  * Created by lenovo on 2015/7/9.
  */
 @Entity
-@Table(name="soupe_user_role",catalog = "apple")
-public class UserRoleRelation  implements Serializable{
+@Table(name="soupe_user_role_org",catalog = "apple")
+public class UserRoleOrgRelation  implements Serializable{
 
     private static final long serialVersionUID = -6870397565109005129L;
     @Id
@@ -26,6 +26,12 @@ public class UserRoleRelation  implements Serializable{
     @ManyToOne(targetEntity = Role.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id",nullable = false,referencedColumnName = "role_id")
     private Role role ;
+
+    /**
+     * 用户被授予权限的组织
+     */
+    @Column(name="org_id",nullable = false)
+    private int orgId=0;
 
     public Long getId() {
         return id;
@@ -49,5 +55,13 @@ public class UserRoleRelation  implements Serializable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public int getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
     }
 }

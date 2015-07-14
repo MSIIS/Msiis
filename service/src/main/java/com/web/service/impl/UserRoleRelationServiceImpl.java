@@ -2,8 +2,8 @@ package com.web.service.impl;
 
 import com.util.model.QueryRule;
 import com.web.dao.Hdao.DaoManager;
-import com.web.service.UserRoleRelationService;
-import com.web.soupe.web.UserRoleRelation;
+import com.web.service.UserRoleOrgRelationService;
+import com.web.soupe.web.UserRoleOrgRelation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,28 +15,28 @@ import java.util.List;
  */
 @Service("userRoleRelationServiceImpl")
 @Transactional(readOnly = true)
-public class UserRoleRelationServiceImpl implements UserRoleRelationService{
+public class UserRoleRelationServiceImpl implements UserRoleOrgRelationService{
 
     @Autowired
     private DaoManager daoManager;
     @Override
-    public List<UserRoleRelation> findByUserId(Long userId) {
+    public List<UserRoleOrgRelation> findByUserId(Long userId) {
         QueryRule queryRule =QueryRule.getInstance();
         queryRule.addEqual("user",userId);
-        return this.daoManager.getUserRoleRelationDaoH4().find(queryRule);
+        return this.daoManager.getUserRoleOrgRelationDaoH4().find(queryRule);
     }
 
     @Override
-    public List<UserRoleRelation> findByRoleId(Long roleId) {
+    public List<UserRoleOrgRelation> findByRoleId(Long roleId) {
         QueryRule queryRule =QueryRule.getInstance();
         queryRule.addEqual("role",roleId);
-        return this.daoManager.getUserRoleRelationDaoH4().find(queryRule);
+        return this.daoManager.getUserRoleOrgRelationDaoH4().find(queryRule);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void save(List<UserRoleRelation> relations) {
-        this.daoManager.getUserRoleRelationDaoH4().saveAll(relations);
+    public void save(List<UserRoleOrgRelation> relations) {
+        this.daoManager.getUserRoleOrgRelationDaoH4().saveAll(relations);
     }
 
     public DaoManager getDaoManager() {

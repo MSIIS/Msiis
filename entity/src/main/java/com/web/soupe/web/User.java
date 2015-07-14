@@ -2,7 +2,6 @@ package com.web.soupe.web;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -43,9 +42,9 @@ public class User extends SimpleProperty implements Serializable {
     @JoinColumn(name = "org_id",referencedColumnName = "org_id")
     private Organization organization;
 
-    @OneToMany(targetEntity = UserRoleRelation.class,
+    @OneToMany(targetEntity = UserRoleOrgRelation.class,
             mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<UserRoleRelation> userRoleRelationList ;
+    private List<UserRoleOrgRelation> userRoleOrgRelations;
 
     public User() {
     }
@@ -74,12 +73,12 @@ public class User extends SimpleProperty implements Serializable {
         this.password = password;
     }
 
-    public List<UserRoleRelation> getUserRoleRelationList() {
-        return userRoleRelationList;
+    public List<UserRoleOrgRelation> getUserRoleOrgRelations() {
+        return userRoleOrgRelations;
     }
 
-    public void setUserRoleRelationList(List<UserRoleRelation> userRoleRelationList) {
-        this.userRoleRelationList = userRoleRelationList;
+    public void setUserRoleOrgRelations(List<UserRoleOrgRelation> userRoleOrgRelations) {
+        this.userRoleOrgRelations = userRoleOrgRelations;
     }
 
     public String getNickName() {

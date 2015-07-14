@@ -2,7 +2,6 @@ package com.web.soupe.web;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,9 +41,9 @@ public class Role implements Serializable {
     @Column(name = "is_system",nullable = false)
     private boolean isSystem=false;
 
-    @OneToMany(targetEntity = UserRoleRelation.class,
+    @OneToMany(targetEntity = UserRoleOrgRelation.class,
             mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<UserRoleRelation> userRoleRelationList;
+    private List<UserRoleOrgRelation> userRoleOrgRelations;
 
     @OneToMany(targetEntity = RolePermissionRelation.class,
             mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -93,12 +92,12 @@ public class Role implements Serializable {
         this.isSystem = isSystem;
     }
 
-    public List<UserRoleRelation> getUserRoleRelationList() {
-        return userRoleRelationList;
+    public List<UserRoleOrgRelation> getUserRoleOrgRelations() {
+        return userRoleOrgRelations;
     }
 
-    public void setUserRoleRelationList(List<UserRoleRelation> userRoleRelationList) {
-        this.userRoleRelationList = userRoleRelationList;
+    public void setUserRoleOrgRelations(List<UserRoleOrgRelation> userRoleOrgRelations) {
+        this.userRoleOrgRelations = userRoleOrgRelations;
     }
 
     public int getStatus() {

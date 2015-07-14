@@ -18,7 +18,8 @@ public class UserDaoH4 extends HBaseDao<User, Long> {
 
     public void insertBatchH(final List<User> collection) {
             final String sql = "insert into soupe_user (user_id ," +
-                    " user_name ,password,status ,is_deleted,create_time,nick_name,real_name,salt) values (?,?,?,?,?,?,?,?,?)";
+                    " user_name ,password,status ,is_deleted,create_time," +
+                    "nick_name,real_name,salt,org_id) values (?,?,?,?,?,?,?,?,?,?)";
             this.doWork(new BaseWork() {
                 @Override
                 public void execute(Connection connection) throws SQLException {
@@ -36,6 +37,7 @@ public class UserDaoH4 extends HBaseDao<User, Long> {
                             ps.setString(7,user.getNickName());
                             ps.setString(8,user.getRealName());
                             ps.setString(9,user.getSalt());
+                            ps.setInt(10,user.getOrganization().getId());
                             ps.addBatch();
                         }
                       ps.executeBatch();

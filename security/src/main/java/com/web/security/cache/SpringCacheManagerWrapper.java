@@ -19,6 +19,7 @@ import java.util.*;
  * @author  gzh
  * <p>Version: 1.0
  */
+@SuppressWarnings("unchecked")
 public class SpringCacheManagerWrapper implements CacheManager {
 
     private org.springframework.cache.CacheManager cacheManager;

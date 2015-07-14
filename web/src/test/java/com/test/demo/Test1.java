@@ -3,9 +3,10 @@ package com.test.demo;
 import com.util.model.PageInfo;
 import com.web.service.RollService;
 import com.web.soupe.roll.Roll;
+import com.web.soupe.web.Organization;
 import com.web.soupe.web.Role;
 import com.web.soupe.web.User;
-import com.web.soupe.web.UserRoleRelation;
+import com.web.soupe.web.UserRoleOrgRelation;
 import org.junit.Test;
 
 import java.util.*;
@@ -48,16 +49,19 @@ public class Test1 extends BaseTestCase {
     @Test
     public void testUserInsertBatch() {
         List<User> users = new ArrayList<User>();
+        Organization o = new Organization();
+        o.setId(1);
         for (int i = 0; i < 3; i++) {
             User user = new User();
             user.setId(Long.parseLong(i + 1 + ""));
             user.setPassword("123");
             user.setUserName("admin" + i);
             user.setRealName("大侠");
-            user.setNickName("菜苗 "+i);
+            user.setNickName("菜苗 " + i);
             user.setSalt("abc");
             user.setStatus(1);
             user.setDeleted(false);
+            user.setOrganization(o);
             users.add(user);
         }
         this.getServiceManager().getUserService().insertBatch(users);
@@ -72,21 +76,21 @@ public class Test1 extends BaseTestCase {
         ids.add(1L);
         ids.add(2L);
         List<Role> roles = this.getServiceManager().getRoleService().findListByIds(ids);
-        List<UserRoleRelation> relations = new ArrayList<UserRoleRelation>();
+        List<UserRoleOrgRelation> relations = new ArrayList<UserRoleOrgRelation>();
         for (Role rle : roles) {
-            UserRoleRelation s = new UserRoleRelation();
+            UserRoleOrgRelation s = new UserRoleOrgRelation();
             s.setRole(rle);
             s.setUser(user);
             relations.add(s);
         }
-        this.getServiceManager().getUserRoleRelationService().save(relations);
+        this.getServiceManager().getUserRoleOrgRelationService().save(relations);
 
     }
 
     @Test
     public void testuserReal() {
 
-        List<UserRoleRelation> roleRelations = this.getServiceManager().getUserService().findById(1L).getUserRoleRelationList();
+        List<UserRoleOrgRelation> roleRelations = this.getServiceManager().getUserService().findById(1L).getUserRoleOrgRelations();
         this.showInfoForCollection(roleRelations);
 
     }

@@ -1,24 +1,16 @@
 package com.web.security.realm;
 
-import com.util.config.UserConfig;
-import com.web.security.cache.CacheManageUtils;
-import com.web.security.cache.CacheNameSpace;
-import com.web.security.cache.UserCacheConf;
 import com.web.service.UserService;
 import com.web.soupe.web.User;
-import com.web.soupe.web.UserRoleRelation;
-import org.apache.shiro.SecurityUtils;
+import com.web.soupe.web.UserRoleOrgRelation;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.CacheManagerAware;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,8 +43,8 @@ public class MyRealm extends AuthorizingRealm  implements CacheManagerAware{
         Set<String> roles = new HashSet<String>();
         User user =userService.findUserByNameAndPassword(name,"",1);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        List<UserRoleRelation> relations =user.getUserRoleRelationList();
-        for(UserRoleRelation relation :relations){
+        List<UserRoleOrgRelation> relations =user.getUserRoleOrgRelations();
+        for(UserRoleOrgRelation relation :relations){
             roles.add(String.valueOf(relation.getRole().getId()));
         }
         info.addRoles(roles);

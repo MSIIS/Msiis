@@ -2,7 +2,7 @@ package com.web.service.impl;
 
 import com.web.service.RoleService;
 import com.web.service.RollService;
-import com.web.service.UserRoleRelationService;
+import com.web.service.UserRoleOrgRelationService;
 import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class ServiceManager{
     @Autowired
     private RoleService roleService;
     @Autowired
-    private UserRoleRelationService userRoleRelationService;
+    private UserRoleOrgRelationService userRoleOrgRelationService;
 	public RollService getRollService() {
 		return rollService;
 	}
@@ -38,11 +38,11 @@ public class ServiceManager{
         this.roleService = roleService;
     }
 
-    public UserRoleRelationService getUserRoleRelationService() {
-        return userRoleRelationService;
+    public UserRoleOrgRelationService getUserRoleOrgRelationService() {
+        return userRoleOrgRelationService;
     }
 
-    public void setUserRoleRelationService(UserRoleRelationService userRoleRelationService) {
-        this.userRoleRelationService = userRoleRelationService;
+    public void setUserRoleOrgRelationService(UserRoleOrgRelationService userRoleOrgRelationService) {
+        this.userRoleOrgRelationService = userRoleOrgRelationService;
     }
 }
