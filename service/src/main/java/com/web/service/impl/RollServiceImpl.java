@@ -57,7 +57,7 @@ public  class RollServiceImpl extends BaserService implements RollService {
 				Collections.sort(r1);
 				roll.setRed(this.convertToString(r1));
 				roll.setBlue(this.convertToString(b1));
-				roll.setNumberFiel(sort);
+				roll.setIssueNum(sort);
 				roll.setRedSum(sum);
 				roll.setDataSourceType(DataType.SSQ_FOR_SOURE_TYPE_KILL);
 				rolls.add(roll);
@@ -172,7 +172,7 @@ public  class RollServiceImpl extends BaserService implements RollService {
 				Collections.sort(r1);
 				roll.setRed(this.convertToString(r1));
 				roll.setBlue(this.convertToString(b1));
-				roll.setNumberFiel(sort);
+				roll.setIssueNum(sort);
 				roll.setRedSum(sum);
 				roll.setDataSourceType(DataType.SSQ_FOR_SOURE_TYPE_CHOOSE);
 				rolls.add(roll);
