@@ -2,7 +2,6 @@ package com.web.soupe.roll;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 
@@ -24,8 +23,8 @@ public class Roll implements Serializable {
     /**
      * 期号
      */
-    @Column(name = "NUMBERFIELD", nullable = false)
-    private String numberFiel;
+    @Column(name = "iISSUE_NUM", nullable = false)
+    private String issueNum;
 
     @Column(name = "RED", nullable = false)
     private String red;
@@ -50,12 +49,12 @@ public class Roll implements Serializable {
         this.id = id;
     }
 
-    public String getNumberFiel() {
-        return numberFiel;
+    public String getIssueNum() {
+        return issueNum;
     }
 
-    public void setNumberFiel(String numberFiel) {
-        this.numberFiel = numberFiel;
+    public void setIssueNum(String issueNum) {
+        this.issueNum = issueNum;
     }
 
     public String getRed() {
