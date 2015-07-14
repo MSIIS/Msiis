@@ -19,11 +19,11 @@ public class UserRoleRelation  implements Serializable{
     @Column(name = "id",nullable = false)
     private Long id ;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false,referencedColumnName = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Role.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id",nullable = false,referencedColumnName = "role_id")
     private Role role ;
 

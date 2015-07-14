@@ -42,9 +42,13 @@ public class Role implements Serializable {
     @Column(name = "is_system",nullable = false)
     private boolean isSystem=false;
 
-    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = UserRoleRelation.class,
+            mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<UserRoleRelation> userRoleRelationList;
 
+    @OneToMany(targetEntity = RolePermissionRelation.class,
+            mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<RolePermissionRelation> rolePermissionRelations;
 
     public Role() {
     }
@@ -103,5 +107,13 @@ public class Role implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public List<RolePermissionRelation> getRolePermissionRelations() {
+        return rolePermissionRelations;
+    }
+
+    public void setRolePermissionRelations(List<RolePermissionRelation> rolePermissionRelations) {
+        this.rolePermissionRelations = rolePermissionRelations;
     }
 }

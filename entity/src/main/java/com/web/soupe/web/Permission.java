@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lenovo on 2015/7/3.
@@ -30,6 +31,9 @@ public class Permission extends SimpleProperty implements Serializable {
     private int parentId;
     @Column(name="res_name")
     private String  res_name;
+    @OneToMany(targetEntity = RolePermissionRelation.class,
+            mappedBy = "permission",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<RolePermissionRelation> rolePermissionRelations;
 
     public Permission() {
     }
@@ -72,5 +76,13 @@ public class Permission extends SimpleProperty implements Serializable {
 
     public void setRes_name(String res_name) {
         this.res_name = res_name;
+    }
+
+    public List<RolePermissionRelation> getRolePermissionRelations() {
+        return rolePermissionRelations;
+    }
+
+    public void setRolePermissionRelations(List<RolePermissionRelation> rolePermissionRelations) {
+        this.rolePermissionRelations = rolePermissionRelations;
     }
 }

@@ -39,7 +39,12 @@ public class User extends SimpleProperty implements Serializable {
     @Column(name = "real_name",nullable = false)
     private String realName;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Organization.class)
+    @JoinColumn(name = "org_id",referencedColumnName = "org_id")
+    private Organization organization;
+
+    @OneToMany(targetEntity = UserRoleRelation.class,
+            mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<UserRoleRelation> userRoleRelationList ;
 
     public User() {
@@ -99,5 +104,13 @@ public class User extends SimpleProperty implements Serializable {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }
