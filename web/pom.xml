@@ -76,6 +76,9 @@
                         WEB-INF/lib/tomcat-servlet-api-7.0.47.jar,
                         WEB-INF/lib/sqljdbc-4.jar
                     </packagingExcludes>
+                    <warSourceExcludes>
+                        sql/**
+                    </warSourceExcludes>
                 </configuration>
             </plugin>
         </plugins>
