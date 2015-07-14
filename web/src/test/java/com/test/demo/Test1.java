@@ -1,8 +1,10 @@
 package com.test.demo;
 
 import com.util.model.PageInfo;
+import com.web.service.OrganizationService;
 import com.web.service.RollService;
 import com.web.soupe.roll.Roll;
+import com.web.soupe.util.TreeEntityUtils;
 import com.web.soupe.web.Organization;
 import com.web.soupe.web.Role;
 import com.web.soupe.web.User;
@@ -92,6 +94,15 @@ public class Test1 extends BaseTestCase {
 
         List<UserRoleOrgRelation> roleRelations = this.getServiceManager().getUserService().findById(1L).getUserRoleOrgRelations();
         this.showInfoForCollection(roleRelations);
+
+    }
+
+    @Test
+    public void testOrgs(){
+        OrganizationService organizationService=this.getServiceManager().getOrganizationService();
+
+        organizationService.saveAll((List<Organization>)TreeEntityUtils.sortTreeEntity(organizationService.getListForSort()));;
+
 
     }
 

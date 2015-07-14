@@ -15,7 +15,7 @@ import java.util.List;
 @DynamicInsert(true)
 @DynamicUpdate(true)
 @Table(name = "soupe_permission", catalog = "apple")
-public class Permission extends SimpleProperty implements Serializable {
+public class Permission extends SimpleProperty implements Serializable,TreeEntity {
     private static final long serialVersionUID = -8662431340218255008L;
 
     @Id
@@ -31,17 +31,21 @@ public class Permission extends SimpleProperty implements Serializable {
     private int parentId;
     @Column(name="res_name")
     private String  res_name;
+    @Column(name="sort_code")
+    private String sortCode;
+    @Column(name="is_leaf")
+    private  boolean isLeaf=false;
     @OneToMany(targetEntity = RolePermissionRelation.class,
             mappedBy = "permission",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<RolePermissionRelation> rolePermissionRelations;
 
     public Permission() {
     }
-
+    @Override
     public int getId() {
         return id;
     }
-
+    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -61,11 +65,11 @@ public class Permission extends SimpleProperty implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    @Override
     public int getParentId() {
         return parentId;
     }
-
+    @Override
     public void setParentId(int parentId) {
         this.parentId = parentId;
     }
@@ -84,5 +88,25 @@ public class Permission extends SimpleProperty implements Serializable {
 
     public void setRolePermissionRelations(List<RolePermissionRelation> rolePermissionRelations) {
         this.rolePermissionRelations = rolePermissionRelations;
+    }
+
+    @Override
+    public String getSortCode() {
+        return this.sortCode;
+    }
+
+    @Override
+    public boolean isLeaf() {
+        return this.isLeaf;
+    }
+
+    @Override
+    public void setLeaf(boolean b) {
+     this.isLeaf=b;
+    }
+
+    @Override
+    public void setSortCode(String sortCode) {
+      this.sortCode=sortCode;
     }
 }

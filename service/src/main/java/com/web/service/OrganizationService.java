@@ -1,7 +1,9 @@
 package com.web.service;
 
 import com.web.soupe.web.Organization;
+import org.apache.commons.collections.CollectionUtils;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -20,4 +22,12 @@ public interface OrganizationService {
      * @return
      */
     List<Organization> getAllList(Integer parentId);
+
+    /**
+     * 为了排序
+     * @return
+     */
+    List<Organization> getListForSort();
+
+    void saveAll(Collection<Organization> orgs);
 }

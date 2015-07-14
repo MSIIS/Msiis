@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="soupe_organizatioin",catalog = "apple")
-public class Organization  extends SimpleProperty implements Serializable{
+public class Organization  extends SimpleProperty implements Serializable ,TreeEntity{
     private static final long serialVersionUID = 9153891663335252189L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,10 @@ public class Organization  extends SimpleProperty implements Serializable{
     private int parentId = 0;
 
     @Column(name="is_leaf",nullable = false)
-    private  boolean isLeaf=false;
+    private  boolean isLeaf=true;
+
+    @Column(name="sort_code")
+    private String sortCode;
 
     @OneToMany(targetEntity = User.class,fetch = FetchType.LAZY,mappedBy = "organization",cascade = CascadeType.ALL)
     private List<User> userList;
@@ -47,10 +50,12 @@ public class Organization  extends SimpleProperty implements Serializable{
         this.isLeaf = isLeaf;
     }
 
+    @Override
     public int getParentId() {
         return parentId;
     }
 
+    @Override
     public void setParentId(int parentId) {
         this.parentId = parentId;
     }
@@ -71,18 +76,21 @@ public class Organization  extends SimpleProperty implements Serializable{
         this.orgName = orgName;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
+    @Override
     public boolean isLeaf() {
         return isLeaf;
     }
-
+    @Override
     public void setLeaf(boolean isLeaf) {
         this.isLeaf = isLeaf;
     }
@@ -93,5 +101,17 @@ public class Organization  extends SimpleProperty implements Serializable{
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+
+
+    @Override
+    public String getSortCode() {
+        return this.sortCode;
+    }
+
+    @Override
+    public void setSortCode(String sortCode) {
+      this.sortCode=sortCode;
     }
 }

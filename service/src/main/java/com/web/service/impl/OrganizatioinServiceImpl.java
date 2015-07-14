@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -42,5 +43,15 @@ public class OrganizatioinServiceImpl implements OrganizationService {
         queryRule.addEqual("status", SoupeConst.STATUS_OK);
         queryRule.addEqual("parentId",parentId);
         return this.daoManager.getOrganizationDaoH4().find(queryRule);
+    }
+
+    @Override
+    public List<Organization> getListForSort() {
+        return this.daoManager.getOrganizationDaoH4().getAllOrganizatioinForSort();
+    }
+
+    @Override
+    public void saveAll(Collection<Organization> orgs) {
+        this.daoManager.getOrganizationDaoH4().saveAll(orgs);
     }
 }
