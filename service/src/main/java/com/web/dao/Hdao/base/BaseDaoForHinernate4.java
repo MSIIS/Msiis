@@ -28,10 +28,10 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 
+
 public class BaseDaoForHinernate4<T extends Serializable, PK extends Serializable> implements  IBaseDao<T, PK>{
 
 	// 泛型反射类
-
 	protected Class<T> entityClass;
 	
 	
