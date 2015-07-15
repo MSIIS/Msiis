@@ -35,6 +35,7 @@ public class RollDaoH4 extends HBaseDao<Roll, Long> {
                  }
                  ps.executeBatch();
              }catch (SQLException ex){
+                 ex.printStackTrace();
 
              }
          }

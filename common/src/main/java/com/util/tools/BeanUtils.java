@@ -2,8 +2,6 @@ package com.util.tools;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Logger;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
 
@@ -16,6 +14,7 @@ import java.util.List;
 /**
  * Created by nlf on 2015-7-8.
  */
+@SuppressWarnings("unchecked")
 public class BeanUtils extends org.apache.commons.beanutils.BeanUtils {
 
     /**
