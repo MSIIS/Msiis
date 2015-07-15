@@ -11,6 +11,7 @@ import com.web.security.cache.CacheManageUtils;
 import com.web.security.cache.CacheNameSpace;
 import com.web.security.cache.SpringCacheManagerWrapper;
 import com.web.security.cache.UserCacheConf;
+import com.web.soupe.dto.SoupeWebModel;
 import net.sf.ehcache.Cache;
 import org.apache.log4j.Logger;
 import com.web.soupe.web.User;
@@ -27,25 +28,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 @RequestMapping(value = LoginController.PATH)
 public class LoginController extends BaseController {
-    protected static final String PATH = "/admin/";
+    protected static final String PATH = "/admin";
     private Logger logger = Logger.getLogger(LoginController.class);
 
     @Autowired
     @Qualifier("myCacheManager")
     private CacheManager cacheManager ;
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(HttpServletRequest request) {
         return new ModelAndView("admin/login", "message", null);
     }
+    @RequestMapping(value ="", method = RequestMethod.GET)
+    public ModelAndView logining(HttpServletRequest request) {
+        return new ModelAndView("admin/login", "message", null);
+    }
 
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView login1(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
         if (user == null) {
@@ -54,14 +60,16 @@ public class LoginController extends BaseController {
         return new ModelAndView("admin/index", "message", null);
     }
 
-    @RequestMapping(value = "login/submit", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView submit(
+    @RequestMapping(value = "/login/submit", method = {RequestMethod.POST})
+    @ResponseBody
+    public SoupeWebModel submit(
             @RequestParam(value = "userName", required = true) String name,
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "rememberMe" ,required=false ,defaultValue = "false") boolean remmeberMe,
             HttpServletRequest request) {
         Map<String, String> model = new HashMap<String, String>();
         UsernamePasswordToken token = null;
+        SoupeWebModel soupeWebModel =new SoupeWebModel();
         try {
             User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
             if (user == null) {
@@ -72,24 +80,23 @@ public class LoginController extends BaseController {
                 user=this.getServiceManager().getUserService().findUserByNameAndPassword(name,"",1);
             }
             request.getSession().setAttribute(UserConfig.USER_LOGON_SESSION.getCode(), user);
+            soupeWebModel.setSuccess(true);
         } catch (AuthenticationException a) {
             token.clear();
-            return new ModelAndView("admin/login", "message", null);
         } catch (Exception ex) {
             logger.error("验证登录信息出错，" + ex.getMessage(), ex);
-            return new ModelAndView("admin/login", "message", null);
         }
-        return new ModelAndView("admin/index", model);
+        return soupeWebModel;
     }
 
-    @RequestMapping(value = "logout")
+    @RequestMapping(value = "/logout")
     public String logout(){
         Subject subject =SecurityUtils.getSubject();
         subject.logout();
         return "admin/login";
     }
 
-    @RequestMapping(value = "error")
+    @RequestMapping(value = "/error")
     public String error(){
         Subject subject =SecurityUtils.getSubject();
         subject.logout();

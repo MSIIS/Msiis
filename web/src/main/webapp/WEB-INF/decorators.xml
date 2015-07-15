@@ -3,16 +3,18 @@
 <decorators defaultdir="/decorators">
     <!-- Any urls that are excluded will never be decorated by Sitemesh -->
     <excludes>
-        <pattern>/js/*</pattern>
-        <pattern>/css/*</pattern>
-        <pattern>/images/*</pattern>
-        <pattern>/image/*</pattern>
+        <pattern>/resources/**</pattern>
     </excludes>
     <!--根据请求是的URL过滤-->
     <decorator name="view.index" page="default.jsp">
         <pattern>/view</pattern>
         <pattern>/view/*</pattern>
-
     </decorator>
-    <decorator name="admin.index" page="admin-decorate.jsp"/>
+    <decorator name="admin.index" page="default.jsp">
+        <pattern>/admin/index</pattern>
+        <pattern>/admin/login</pattern>
+        <pattern>/admin/error</pattern>
+        <pattern>/admin/logon</pattern>
+        <pattern>/admin</pattern>
+    </decorator>
 </decorators>

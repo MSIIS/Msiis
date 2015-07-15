@@ -101,7 +101,7 @@
         <property name="usernameParam" value="userName"/>
         <property name="passwordParam" value="password"/>
         <property name="rememberMeParam" value="rememberMe"/>
-        <property name="loginUrl" value="/admin/login"/>
+        <property name="loginUrl" value="redirect:/admin/login"/>
     </bean>
     <!--shiro 配置 ,url的配置，其实是请求的URL配置-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -122,7 +122,9 @@
                 view/**=anon
                 admin/logout=anon
                 admin/login=anon
-                /error=anon
+                admin/error=anon
+                admin/index=authc
+                admin/service/*=authc
             </value>
         </property>
     </bean>
