@@ -1,3 +1,4 @@
+var context ='${pageContext.request.contextPath}';
 function zyzl(){
 }
 function ssq(){

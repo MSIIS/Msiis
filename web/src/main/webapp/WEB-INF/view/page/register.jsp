@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<%
-    String contextPath = request.getContextPath();
-%>
 <head>
     <title>用户注册</title>
     <script type="text/javascript">
@@ -21,7 +18,7 @@
     </script>
 </head>
 <body>
-<form action="<%=contextPath%>/view/user/register/submit" method="post" class="form-horizontal" id="register">
+<form action="${pageContext.request.contextPath}/view/user/register/submit" method="post" class="form-horizontal" id="register">
     <div class="col-sm-4">
         <label for="username">loginName:</label><input name="userName" type="text" id="username" class="form-control col-sm-2"/><br/>
         <label for="password">password:</label> <input name="password" type="password" id="password" class="form-control col-sm-2"/><br/>

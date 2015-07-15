@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<%
-    String contextPath = request.getContextPath();
-%>
 <head>
     <title>用户管理页</title>
 <body>

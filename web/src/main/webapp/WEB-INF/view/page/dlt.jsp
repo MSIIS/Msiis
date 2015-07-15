@@ -3,17 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-	String contextPath = request.getContextPath();
-%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>大乐透</title>
 
-<script type="text/javascript" src="<%=contextPath%>/resources/util/com-submit.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/util/com-submit.js"></script>
 <body>
      dlt------------------
 </body>
 <script type="text/javascript">
- var contextPath="<%=contextPath%>";
+ var contextPath="${pageContext.request.contextPath}";
 </script>
 </html>

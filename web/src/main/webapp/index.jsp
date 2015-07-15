@@ -1,21 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%
-    String contextPath = request.getContextPath();
-%>
 <head>
     <title>I乐后台|:)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet"
-          href="<%=contextPath%>/resources/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="<%=contextPath%>/resources/bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet"
-          href="<%=contextPath%>/resources/view/css/admin.css">
-    <script type="text/javascript"
-            src="<%=contextPath%>/resources/jquery/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript"
-            src="<%=contextPath%>/resources/bootstrap/js/bootstrap.min.js"></script>
+          href="${pageContext.request.contextPath}/resources/view/css/admin.css">
 </head>
 <body class="skin-blue">
 <header class="header">

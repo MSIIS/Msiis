@@ -3,14 +3,11 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<%
-    String contextPath = request.getContextPath();
-%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>双色球</title>
-<script type="text/javascript" src="<%=contextPath%>/resources/util/com-submit.js"></script>
-<script type="text/javascript" src="<%=contextPath%>/resources/view/js/ssq/ssq-kill.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/util/com-submit.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/view/js/ssq/ssq-kill.js"></script>
 <head/>
 
 <body>
@@ -84,36 +81,37 @@
     </td>
 </tr>
   </table>
-</body>
 <script type="text/javascript">
-//复选框事件
-//全选、取消全选的事件
-function selectAll(){
-	var isChecked =$("#check").get(0).checked;
-	var elements_all=document.getElementsByName('chk_list');      
-    for(i=0;i<elements_all.length;i++) {      
-        var element=elements_all[i];      
-        if(element.type=="checkbox")  {      
-            element.checked=isChecked;      
-        }      
-    }  
-	/* if ($("#check").get(0).checked) {
-		$(":checkbox").attr("checked", true);
-	} else {
-		$(":checkbox").attr("checked", false);
-	} */
-}
-//子复选框的事件
-function setSelectAll($this){
-	//当没有选中某个子复选框时，SelectAll取消选中
-	if (!$(this).prop('checked')) {
-		$("#check").get(0).checked= false;
-	}
-	var chsub = $("input[type='checkbox'][name=chk_list]").length; //获取subcheck的个数
-	var checkedsub = $("input[type='checkbox'][name=chk_list]:checked").length; //获取选中的subcheck的个数
-	if (checkedsub == chsub) {
-		$("#check").get(0).checked= true;
-	}
-}
+    //复选框事件
+    //全选、取消全选的事件
+    function selectAll(){
+        var isChecked =$("#check").get(0).checked;
+        var elements_all=document.getElementsByName('chk_list');
+        for(i=0;i<elements_all.length;i++) {
+            var element=elements_all[i];
+            if(element.type=="checkbox")  {
+                element.checked=isChecked;
+            }
+        }
+        /* if ($("#check").get(0).checked) {
+         $(":checkbox").attr("checked", true);
+         } else {
+         $(":checkbox").attr("checked", false);
+         } */
+    }
+    //子复选框的事件
+    function setSelectAll($this){
+        //当没有选中某个子复选框时，SelectAll取消选中
+        if (!$(this).prop('checked')) {
+            $("#check").get(0).checked= false;
+        }
+        var chsub = $("input[type='checkbox'][name=chk_list]").length; //获取subcheck的个数
+        var checkedsub = $("input[type='checkbox'][name=chk_list]:checked").length; //获取选中的subcheck的个数
+        if (checkedsub == chsub) {
+            $("#check").get(0).checked= true;
+        }
+    }
 </script>
+</body>
+
 </html>

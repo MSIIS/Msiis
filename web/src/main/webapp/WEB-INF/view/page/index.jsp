@@ -6,12 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <head>
-    <%
-        String contextPath = request.getContextPath();
-    %>
     <title>I乐平台</title>
     <script type="text/javascript"
-            src="<%=contextPath%>/resources/view/js/index-main.js"></script>
+            src="${pageContext.request.contextPath}/resources/view/js/index-main.js"></script>
 </head>
 <body background="#fff">
 <nav class="navbar navbar-inverse" role="navigation ">
