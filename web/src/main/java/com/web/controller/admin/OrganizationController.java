@@ -3,7 +3,6 @@ package com.web.controller.admin;
 import com.util.model.UrlPrefix;
 import com.web.controller.base.BaseController;
 import com.web.service.OrganizationService;
-import com.web.service.UserService;
 import com.web.soupe.dto.SoupeConst;
 import com.web.soupe.dto.SoupeWebModel;
 import com.web.soupe.util.TreeEntityUtils;

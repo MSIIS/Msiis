@@ -1,10 +1,8 @@
 package com.web.soupe.util;
 
-import com.web.soupe.web.Organization;
 import com.web.soupe.web.TreeEntity;
 import org.apache.commons.collections.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,22 +16,23 @@ public final class TreeEntityUtils {
         int pid = 0;
         if(CollectionUtils.isNotEmpty(entities)){
             int index = 0;
-            int level =0;
+            int level =1;
             String pSortCode ="";
             for(TreeEntity o :entities){
                 if(pList==null){
                     pList= new LinkedList<TreeEntity>();
                 }
                 if(o.getParentId()==pid){
-                   level++;
                    index++;
+                   if(index/1000>level){
+                       level++;
+                   }
                    String sortCode=pSortCode+level+String.format("%03d",index);
                    o.setSortCode(sortCode);
                    pList.add(o);
 
                 }else{
                     index=1;
-                    level=1;
                     for(TreeEntity p:pList){
                         if(p.getId()==o.getParentId()){
                             pSortCode=p.getSortCode();
@@ -51,4 +50,5 @@ public final class TreeEntityUtils {
         }
         return entities;
     }
+
 }
