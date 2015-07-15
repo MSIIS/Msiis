@@ -2,14 +2,11 @@
 <%@ taglib prefix="sitemesh-decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <html>
 <head>
-    <%
-        String contextPath = request.getContextPath();
-    %>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>登录页面</title>
-    <script type="text/javascript" src="<%=contextPath%>/resources/util/com-submit.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/util/com-submit.js"></script>
     <script type="text/javascript">
-        var contextPath = "<%=contextPath%>";
+        var contextPath = '${pageContext.request.contextPath}';
         $(function () {
             $("#main").css({
                 "position": "absolute",
@@ -20,13 +17,13 @@
 
         function submit1() {
             var url = contextPath + "/admin/login/submit";
-            var successUrl=contextPath + "/admin/index";
+            var successUrl = contextPath + "/admin/index";
             $("#login").attr('action', url);
-            $("#login").ajaxForm(function(data){
-                if(!data.success){
+            $("#login").ajaxForm(function (data) {
+                if (!data.success) {
                     alert(data.message);
-                }else{
-                    location.href=successUrl;
+                } else {
+                    location.href = successUrl;
                 }
             });
         }
