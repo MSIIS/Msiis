@@ -40,7 +40,7 @@ public class UserRegesterController extends BaseController {
             UserService userService=this.getServiceManager().getUserService();
             OrganizationService organizationService=this.getServiceManager().getOrganizationService();
             if(!userService.checkExists(username,nickName)){
-                if(orgId>0){
+                if(orgId!=null&&orgId>0){
                    Organization organization= organizationService.find(orgId);
                    User user =new User();
                    user.setOrganization(organization);
@@ -51,6 +51,8 @@ public class UserRegesterController extends BaseController {
                     user.setSalt(salt);
                     userService.save(user);
                     soupeWebModel.setSuccess(true);
+                }else{
+                    soupeWebModel.setMessage("必须选择组织单位。");
                 }
             }else{
                 soupeWebModel.setMessage("用户名或者昵称已经存在。");
