@@ -35,6 +35,10 @@ public class Permission extends SimpleProperty implements Serializable,TreeEntit
     private String sortCode;
     @Column(name="is_leaf")
     private  boolean isLeaf=false;
+
+    //手动设置菜单顺序时使用，sortCode为自动。
+    @Column(name="sort_num")
+    private int sortNum;
     @OneToMany(targetEntity = RolePermissionRelation.class,
             mappedBy = "permission",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<RolePermissionRelation> rolePermissionRelations;
@@ -108,5 +112,13 @@ public class Permission extends SimpleProperty implements Serializable,TreeEntit
     @Override
     public void setSortCode(String sortCode) {
       this.sortCode=sortCode;
+    }
+
+    public int getSortNum() {
+        return sortNum;
+    }
+
+    public void setSortNum(int sortNum) {
+        this.sortNum = sortNum;
     }
 }
