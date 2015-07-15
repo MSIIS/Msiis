@@ -4,18 +4,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>登录页面</title>
+    <style type="text/css">
+        body {
+            background-image: url(${pageContext.request.contextPath}/resources/view/images/index.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/util/com-submit.js"></script>
     <script type="text/javascript">
         var contextPath = '${pageContext.request.contextPath}';
         $(function () {
             $("#main").css({
                 "position": "absolute",
-                "top": $(document).height() / 5,
-                "left": $(document).width() / 3
+                "top": $(document).height() / 3,
+                "left": $(document).width() / 4.5
             });
-        });
-
-        function submit1() {
             var url = contextPath + "/admin/login/submit";
             var successUrl = contextPath + "/admin/index";
             $("#login").attr('action', url);
@@ -26,58 +31,55 @@
                     location.href = successUrl;
                 }
             });
-        }
 
+        });
     </script>
 </head>
-<body>
-<div class="container" id="main">
-    <div class="row" align="center">
-        <div class="col-md-4 col-md-offset-4">
-            <form action="" id="login" method="post">
-                <table class="table table-bordered" style="background-color:#F5F5F5">
-                    <tr>
-                        <td align="center" style="border:none"><span>用户名</span></td>
-                        <td style="border:none">
-                            <div class="input-group">
-                                <input type="text" name="userName" class="form-control" placeholder="Username"
-                                       id="name">
-                            </div>
-                        </td>
-                    </tr>
+<body background="">
 
-                    <tr>
-                        <td align="center" style="border:none">密码</td>
-                        <td style="border:none">
-                            <div class="input-group">
-                                <input type="password" name="password" class="form-control" placeholder="Password"
-                                       id="password">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="border:none">记住我</td>
-                        <td style="border:none">
-                            <div class="input-group">
-                                <input type="checkbox" name="rememberMe" class="form-control" id="remmber">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="2" style="border:none">
-                            <div>
-                                <button type="submit" class="btn btn-primary" id="sumbit" onclick="submit1()">确定
-                                </button>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                <button type="reset" class="btn btn-default" id="cancle" onclick="cancle()"> 取消</button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+<div class="container" id="main">
+    <div class="row" style=" margin:0 auto;height:500px;">
+
+
+        <div class="col-md-5 col-md-offset-3">
+            <form action="" id="login" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">登录名:</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" placeholder="UserName" name="userName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                               name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="rememberMe" id="remmberMe"> 记住我;)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                           <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">登 录</button>
+                           </div>
+                          <div class="col-sm-8">
+                            <label for="reg"><small>没有帐号，弄啥嘞？</small></label>
+                                  <a class="btn " href="${pageContext.request.contextPath}/view/user/register" id="reg"><strong>注册帐号</strong></a>
+                          </div>
+                        </div>
+                </div>
             </form>
         </div>
     </div>
-
 </div>
 </body>
 </html>

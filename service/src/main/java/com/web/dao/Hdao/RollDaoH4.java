@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 @Component("rollDaoH4")
 public class RollDaoH4 extends HBaseDao<Roll, Long> {
 	

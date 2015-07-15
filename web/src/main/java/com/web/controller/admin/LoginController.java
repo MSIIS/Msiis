@@ -83,8 +83,10 @@ public class LoginController extends BaseController {
             soupeWebModel.setSuccess(true);
         } catch (AuthenticationException a) {
             token.clear();
+            soupeWebModel.setMessage("登录认证失败...");
         } catch (Exception ex) {
-            logger.error("验证登录信息出错，" + ex.getMessage(), ex);
+            logger.error("验证登录信息出现系统错误：" + ex.getMessage(), ex);
+            soupeWebModel.setMessage("验证登录信息出现系统错误"+ex.getMessage());
         }
         return soupeWebModel;
     }
