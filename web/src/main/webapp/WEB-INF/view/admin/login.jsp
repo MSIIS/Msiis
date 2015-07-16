@@ -53,14 +53,14 @@
                     <label for="username" class="col-sm-2 control-label">登录名:</label>
 
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username" placeholder="col-sm-10" name="userName">
+                        <input type="text" class="form-control" id="username" placeholder="name" name="userName">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
 
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password" placeholder="col-sm-10"
+                        <input type="password" class="form-control" id="password" placeholder="password"
                                name="password">
                     </div>
                 </div>

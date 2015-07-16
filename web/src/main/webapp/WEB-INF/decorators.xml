@@ -10,11 +10,13 @@
         <pattern>/view</pattern>
         <pattern>/view/*</pattern>
     </decorator>
-    <decorator name="admin.index" page="default.jsp">
-        <pattern>/admin/index</pattern>
+    <decorator name="admin.login" page="default.jsp">
         <pattern>/admin/login</pattern>
         <pattern>/admin/error</pattern>
         <pattern>/admin/logon</pattern>
         <pattern>/admin</pattern>
     </decorator>
+   <decorator name="admin.index" page="admin-decorate-index.jsp">
+       <pattern>/admin/index</pattern>
+   </decorator>
 </decorators>
