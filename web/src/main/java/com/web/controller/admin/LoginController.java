@@ -55,7 +55,7 @@ public class LoginController extends BaseController {
     public ModelAndView login1(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
         if (user == null) {
-            return new ModelAndView("admin/login", "message", null);
+            return new ModelAndView("redirect:/admin/login", "message", null);
         }
         return new ModelAndView("admin/index", "message", null);
     }
