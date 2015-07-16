@@ -1,6 +1,7 @@
 package com.web.controller.admin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,9 @@ import com.web.security.cache.CacheManageUtils;
 import com.web.security.cache.CacheNameSpace;
 import com.web.security.cache.SpringCacheManagerWrapper;
 import com.web.security.cache.UserCacheConf;
+import com.web.service.PermissionService;
 import com.web.soupe.dto.SoupeWebModel;
+import com.web.soupe.web.Permission;
 import net.sf.ehcache.Cache;
 import org.apache.log4j.Logger;
 import com.web.soupe.web.User;
@@ -25,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.ehcache.EhCacheManagerUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,11 +57,24 @@ public class LoginController extends BaseController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView login1(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
         User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
         if (user == null) {
-            return new ModelAndView("redirect:/admin/login", "message", null);
+            modelAndView.setViewName("redirect:/admin/login");
+        }else{
+         //获取一级菜单
+            PermissionService permissionService =this.getServiceManager().getPermissionService();
+         List<Permission> permissionList= permissionService.findByParentId(0);
+         modelAndView.addObject("navbar",permissionList);
+         if(!CollectionUtils.isEmpty(permissionList)){
+             Permission  permission =permissionList.get(0);
+             List<Permission> childPermisions=permissionService.findByParentId(permission.getParentId());
+             modelAndView.addObject("menu2",childPermisions);
+         }
+            modelAndView.addObject("user",user);
         }
-        return new ModelAndView("admin/index", "message", null);
+        modelAndView.setViewName("admin/index");
+        return  modelAndView;
     }
 
     @RequestMapping(value = "/login/submit", method = {RequestMethod.POST})

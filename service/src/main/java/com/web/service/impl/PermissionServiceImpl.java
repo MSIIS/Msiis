@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by nlf on 2015-7-14.
  */
@@ -32,5 +34,10 @@ public class PermissionServiceImpl implements PermissionService{
     @Override
     public Permission find(Integer id) {
         return this.daoManager.getPermissionDaoH4().get(id);
+    }
+
+    @Override
+    public List<Permission> findByParentId(Integer pid) {
+        return this.daoManager.getPermissionDaoH4().findByParentId(pid);
     }
 }

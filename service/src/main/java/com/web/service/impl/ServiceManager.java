@@ -1,6 +1,7 @@
 package com.web.service.impl;
 
 import com.web.service.*;
+import com.web.soupe.web.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class ServiceManager{
     private UserRoleOrgRelationService userRoleOrgRelationService;
     @Autowired
     private OrganizationService organizationService;
+    @Autowired
+    private PermissionService permissionService;
 	public RollService getRollService() {
 		return rollService;
 	}
@@ -51,5 +54,13 @@ public class ServiceManager{
 
     public void setOrganizationService(OrganizationService organizationService) {
         this.organizationService = organizationService;
+    }
+
+    public PermissionService getPermissionService() {
+        return permissionService;
+    }
+
+    public void setPermissionService(PermissionService permissionService) {
+        this.permissionService = permissionService;
     }
 }
