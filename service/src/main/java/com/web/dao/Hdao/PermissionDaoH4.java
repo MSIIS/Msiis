@@ -18,6 +18,7 @@ public class PermissionDaoH4 extends HBaseDao<Permission,Integer> {
         queryRule.addEqual("parentId",pid);
         queryRule.addAscOrder("sortNum");
         queryRule.addEqual("status", SoupeConst.STATUS_OK);
+        queryRule.addEqual("deleted",false);
         return this.find(queryRule);
     };
 }
