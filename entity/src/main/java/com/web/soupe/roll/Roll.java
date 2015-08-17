@@ -23,7 +23,7 @@ public class Roll implements Serializable {
     /**
      * 期号
      */
-    @Column(name = "iISSUE_NUM", nullable = false)
+    @Column(name = "ISSUE_NUM", nullable = false)
     private String issueNum;
 
     @Column(name = "RED", nullable = false)
