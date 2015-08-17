@@ -68,7 +68,7 @@ public class LoginController extends BaseController {
          modelAndView.addObject("navbar",permissionList);
          if(!CollectionUtils.isEmpty(permissionList)){
              Permission  permission =permissionList.get(0);
-             List<Permission> childPermisions=permissionService.findByParentId(permission.getParentId());
+             List<Permission> childPermisions=permissionService.findByParentId(permission.getId());
              modelAndView.addObject("menu2",childPermisions);
          }
             modelAndView.addObject("user",user);
