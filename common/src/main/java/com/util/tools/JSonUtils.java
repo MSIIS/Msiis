@@ -1,10 +1,12 @@
 package com.util.tools;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -65,5 +67,23 @@ public class JSonUtils {
         }
     }
 
+    /**
+     * <b>解析简单有序MAP</b>
+     *
+     * @param json json串
+     * @return LinkedHashMap<String, String>
+     */
+    @SuppressWarnings("unchecked")
+    public static LinkedHashMap<String, JSONObject> parseSimpleLinkedHashMap(String json) {
+        if (StringUtils.isEmpty(json)) {
+            return null;
+        }
+        try {
+            return JSON.parseObject(json, LinkedHashMap.class);
+        } catch (Exception e) {
+            logger.error("error", e);
+            return null;
+        }
+    }
 
 }
