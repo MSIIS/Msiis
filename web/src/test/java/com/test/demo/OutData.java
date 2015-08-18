@@ -26,7 +26,7 @@ public class OutData {
         //创建客户端
         CloseableHttpClient httpclient = HttpClients.createDefault();
         // 创建httpget
-        HttpGet httpget = new HttpGet(RollDataOutUrl.f1);
+        HttpGet httpget = new HttpGet(RollDataOutUrl.f2);
         CloseableHttpResponse response = null;
         try {
             // 执行get请求.
@@ -46,20 +46,23 @@ public class OutData {
                     if (m1.size() > 0) {
                         for (String key : m1.keySet()) {
                             JSONObject value = m1.get(key);
-                            OokerData ookerData = new OokerData();
-                            ookerData.setFieldNum(key);
-                            ookerData.setLotteyResult(value.getString("LotteryResult"));
-                            JSONObject killnumObj = value.getJSONObject("KillNum");
-                            List<OokerKillNum> killNums = new LinkedList<OokerKillNum>();
-                            for (Map.Entry<String, Object> entry : killnumObj.entrySet()) {
+                            for(Map.Entry<String, Object> entry : value.entrySet()){
+                                OokerData ookerData = new OokerData();
                                 JSONObject obj = (JSONObject) entry.getValue();
-                                OokerKillNum killNum = new OokerKillNum();
-                                killNum.setCheck(obj.getInteger("Check"));
-                                killNum.setNum(obj.getString("Num"));
-                                killNums.add(killNum);
-                                ookerData.setKillNums(killNums);
+                                ookerData.setFieldNum(entry.getKey());
+                                ookerData.setLotteyResult(obj.getString("r"));
+                                JSONObject killnumObj = obj.getJSONObject("kn");
+                                List<OokerKillNum> killNums = new LinkedList<OokerKillNum>();
+                                for (Map.Entry<String, Object> ee : killnumObj.entrySet()) {
+                                    JSONObject obj1 = (JSONObject) ee.getValue();
+                                    String  n =obj1.getString("n");
+                                    OokerKillNum killNum = new OokerKillNum();
+                                    killNum.setNum(obj1.getString("n"));
+                                    killNums.add(killNum);
+                                    ookerData.setKillNums(killNums);
+                                }
                             }
-                            ookerDatas.add(ookerData);
+                            break;
                         }
                     }
                 }
