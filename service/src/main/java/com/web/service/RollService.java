@@ -1,6 +1,7 @@
 package com.web.service;
 
 
+import com.web.soupe.roll.OokerData;
 import com.web.soupe.roll.Roll;
 
 import java.util.List;
@@ -45,6 +46,9 @@ public interface RollService {
 	void deleteNums(String ids);
 
     List<Roll> findListByJdbcSql(Long id);
+
+    List<OokerData>  getOokerData(String url);
+    List<OokerData>  getOokerData2(String url);
 
 
 }

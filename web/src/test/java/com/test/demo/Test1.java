@@ -1,8 +1,10 @@
 package com.test.demo;
 
 import com.util.model.PageInfo;
+import com.util.model.RollDataOutUrl;
 import com.web.service.OrganizationService;
 import com.web.service.RollService;
+import com.web.soupe.roll.OokerData;
 import com.web.soupe.roll.Roll;
 import com.web.soupe.util.TreeEntityUtils;
 import com.web.soupe.web.Organization;
@@ -104,6 +106,15 @@ public class Test1 extends BaseTestCase {
         organizationService.saveAll((List<Organization>)TreeEntityUtils.sortTreeEntity(organizationService.getListForSort()));;
 
 
+    }
+
+    @Test
+    public  void testOut(){
+        List<OokerData> f1=this.serviceManager.getRollService().getOokerData(RollDataOutUrl.f1);
+        List<OokerData> n1=this.serviceManager.getRollService().getOokerData(RollDataOutUrl.n1);
+        if(f1.size()==n1.size()){
+
+        }
     }
 
 }

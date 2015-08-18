@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.util.model.RollDataOutUrl;
 import com.util.model.UrlPrefix;
 import com.web.controller.base.BaseController;
+import com.web.soupe.roll.OokerData;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import com.web.soupe.dto.SoupeWebModel;
@@ -202,4 +204,17 @@ public class RollController extends BaseController {
 	     return soupewebModel;
 		
 	}
+
+    public String getOokerData(){
+        try{
+            List<OokerData> f1=this.serviceManager.getRollService().getOokerData(RollDataOutUrl.f1);
+            List<OokerData> n1=this.serviceManager.getRollService().getOokerData(RollDataOutUrl.n1);
+            if(f1.size()==n1.size()){
+
+            }
+        }catch (Exception ex){
+            logger.error("获取澳客网数据出错。",ex);
+        }
+        return "";
+    }
 }
