@@ -59,6 +59,7 @@ public class LoginController extends BaseController {
     public ModelAndView login1(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         User user = (User) request.getSession().getAttribute(UserConfig.USER_LOGON_SESSION.getCode());
+        System.out.println("测试一下git提交");
         if (user == null) {
             modelAndView.setViewName("redirect:/admin/login");
         }else{
