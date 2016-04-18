@@ -30,7 +30,7 @@ public class JedisUtil {
      * 获取连接池.
      * @return 连接池实例
      */
-    private static JedisPool getPool(String ip,int port) {
+    public static JedisPool getPool(String ip, int port) {
         String key = ip+":" +port;
         JedisPool pool = null;
         if(!maps.containsKey(key)) {
